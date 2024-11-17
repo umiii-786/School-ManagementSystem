@@ -1,0 +1,33 @@
+.options {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search_inputs {
+    width: 30%;
+    padding: 10px;
+    border-radius: 4px;
+    outline: none;
+    background: transparent;
+    box-shadow: -3px -3px 7px #ffffff, 3px 3px 5px #ceced1, inset -3px -3px 7px #ffffff, inset 3px 3px 5px #ceced1;
+    border: none;
+}
+
+.search-btn {
+    padding: 10px;
+    border-radius: 4px;
+    background-color: rgb(37, 198, 209);
+    color: white;
+    cursor: pointer;
+    border: 1px solid rgb(37, 198, 209);
+    font: bold
+}
+.manage_heading{
+    font-size: 20px;
+    color: rgb(123 122 240);
+    align-self: flex-start;
+    position: relative;
+    left: 70px;
+    margin: 10px 0px;
+}

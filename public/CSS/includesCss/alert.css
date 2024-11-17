@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Mochiy+Pop+P+One&family=Montserrat&family=Oswald:wght@300&family=Varela+Round&family=ZCOOL+KuaiLe&display=swap');
+
+.each_alert{
+    border-radius: 5px;
+    width: 90%;
+    height: 50px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #e5e5e5;
+    cursor: pointer;
+    margin: 20px;
+    box-shadow: 0px 0px 10px 0px #beb3b3;
+    position: relative;
+}
+
+.check {
+    color: #0ad406;
+
+}
+.check:hover{
+  background-color: rgba(147, 209, 117, 0.50);
+  transition:0.5s;
+}
+
+.color {
+  animation: color 2s linear infinite;
+}
+
+.danger {
+  color: rgb(255, 10, 1);
+}
+
+.danger:hover{
+  background-color: rgba(255, 10, 1, 0.33);
+  transition:0.5s;
+}
+
+
+.shine {
+  animation: shine 2s linear infinite;
+}
+@keyframes color {
+  50% {
+   color: #2B3246;
+  }
+  100% {
+    color: #0ad406;
+  }
+}
+
+
+@keyframes shine {
+  0% {
+   color: #2B3246;
+  }
+  50% {
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 40px red,
+      0 0 60px red,
+      0 0 80px red;
+  }
+}
+.removeAlert{
+    width: 15px;
+    height: 15px;
+    position:absolute;
+    right: 20px;
+}

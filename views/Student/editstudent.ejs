@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../CSS/studentCss/studentedit.css">
+    <style>
+        .inputs {
+            width: 40%;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0px 0px 7px 0px rgb(189, 192, 189);
+            background: transparent;
+            border: 1px solid rgb(207, 193, 193);
+            outline: none;
+        }
+        .headerSection{
+            display: flex;
+            align-items: center;
+            margin: 30px;
+            margin-bottom: 10px;
+        }
+        .h1{
+            margin-left: 50px;
+    text-shadow: 1px 16px 9px rgb(53, 49, 49);
+    font-size: 35px;
+        }
+        .submit{
+            background-color: #f0736a;
+    padding: 10px;
+    border: 0px;
+    font-size: 17px;
+    font-weight: 600;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+        }
+        .submit:hover{
+            background-color: #fd7066;
+        }
+
+        .tagname{
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .fieldContainer{
+            display: flex;
+            flex-direction: column;
+        }
+        .error-label{
+            font-size: 13px;
+            color: rgb(252, 69, 69);
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('../includes/navbar.ejs') %>
+        <div class="container">
+            <div class="card user-card">
+
+                <div class="headerSection">
+                <div class="profile-section">
+                    <div class="profile-details text-center">
+                        <img src="<%= data.profileImg %>" alt="User Profile" class="profile-img">
+                        <h4 class="tagname">
+                            <%= data.identity.Role %>
+                        </h4>
+                    </div>
+                </div>
+                <h1 class="h1">Let's Make Changes</h1>
+            </div>
+                <form class="info-section registerForm" method="post" action="/student/<%= data.id %>?_method=PUT">
+                    <div class="info">
+                        <h6>Information</h6>
+                        <div class="info-row">
+                            <div>
+                                <p>Name</p>
+                                <h6  class="fieldContainer"><input type="text" class="controls inputs" name="username"
+                                        value="<%= data.identity.username %>">
+                                        <label class="error-label"></label>
+                                    </h6>
+                            </div>
+                            <div>
+                                <p>Gender</p>
+                                <h6 class="fieldContainer"><select name="gender" id="roleOptions" class="controls inputs"
+                                        value="<%= data.gender %>">
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                        <option>Custom</option>
+                                    </select>
+                                    <label class="error-label"></label>
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <div>
+                                <p>Father</p>
+                                <h6 class="fieldContainer"> <input type="text" class="controls inputs" name="father_name"
+                                        value="<%= data.father_name %>">
+                                        <label class="error-label"></label>
+                                    </h6>
+                            </div>
+                            <div>
+                                <p>Date Of Birth</p>
+                                <h6 class="fieldContainer"><input type="date" class="controls inputs" name="DOB" value="<%= data.DOB %>">
+                                    <label class="error-label"></label>
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <div>
+                                <p>Cnic</p>
+                                <h6 class="fieldContainer"><input type="number" class="controls inputs" name="cnic" value="<%= data.cnic %>">
+                                    <label class="error-label"></label>
+                                </h6>
+                            </div>
+                            <div>
+                                <p>Phone</p>
+                                <h6 class="fieldContainer"><input type="number" class="controls inputs" name="phone"
+                                        value="0<%= data.phone %>">
+                                        <label class="error-label"></label>
+                                    </h6>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="projects">
+                        <h6>Academic</h6>
+                        <div class="info-row">
+                            <div>
+                                <p>class</p>
+                                <h6 class="fieldContainer">
+                                    <select name="class" id="selectboxes_Options" class="controls inputs" value="<%= data.class.className %>">
+                                        <% for( let i=0; i < Available_Classes.length; i++ ) { %>
+                                            <option>
+                                                <%= Available_Classes[i].className %>
+                                            </option>
+
+                                            <% } %>
+                                    </select>
+                                    <label class="error-label"></label>
+                                </h6>
+                            </div>
+                            <div>
+                                <p>Section</p>
+                                <h6  class="fieldContainer"><select name="section" class="controls inputs" value="<%= data.section %>">
+                                        <option>A</option>
+                                        <option>B</option>
+                                    </select>
+                                    <label class="error-label"></label>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="submit" type="button" onclick="validateForm()" >Confirm</button>
+                </form>
+            </div>
+        </div>
+
+        <script src="../../JS/AddForm.js"></script>
+</body>
+
+</html>

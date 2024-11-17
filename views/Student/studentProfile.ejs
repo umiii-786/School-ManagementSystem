@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Card</title>
+    <link rel="stylesheet" href="../../CSS/studentCss/studentprofile.css">
+   
+</head>
+
+<body>
+    <%- include('../includes/navbar.ejs') %>
+        <div class="container">
+            <div class="card user-card">
+                <div class="profile-section">
+                    <div class="profile-details text-center">
+                        <img src="<%= data.profileImg %>" alt="User Profile"
+                            class="profile-img">
+                        <h6 class="name"><%= data.identity.username %></h6>
+                        <p class="designation"><%= data.gender %></p>
+                        <i class="icon-edit">&#9998;</i>
+                    </div>
+                </div>
+                <div class="info-section">
+                    <div class="info">
+                        <h6>Information</h6>
+                        <div class="info-row">
+                            <div>
+                                <p>Father</p>
+                                <h6><%= data.father_name %></h6>
+                            </div>
+                            <div>
+                                <p>Date Of Birth</p>
+                                <h6><%= correctdate %></h6>
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <div>
+                                <p>Cnic</p>
+                                <h6><%= data.cnic %></h6>
+                            </div>
+                            <div>
+                                <p>Phone</p>
+                                <h6>0<%= data.phone %></h6>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="projects">
+                        <h6>Academic</h6>
+                        <div class="info-row">
+                            <div>
+                                <p>class</p>
+                                <h6><%= data.class.className %></h6>
+                            </div>
+                            <div>
+                                <p>Section</p>
+                                <h6><%= data.section %></h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <ul class="social-links">
+                        <li><a href="#" class="facebook">Facebook</a></li>
+                        <li><a href="#" class="twitter">Twitter</a></li>
+                        <li><a href="#" class="instagram">Instagram</a></li>
+                    </ul> -->
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+   
+    
+    <!-- <link rel="stylesheet" href="/CSS/includesCss/navbar.css"> -->
+    <!-- <link rel="stylesheet" href="/CSS/includesCss/sidebar.css"> -->
+    <style>
+        .container {
+            width: 100%;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        body {
+            background-color: #f0f4f8;
+        }
+
+        .main_section {
+
+            width: 85%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+   
+    <div class="container">
+
+        <%- include('includes/sidebar') %>
+            <div class="main_section">
+                <%- include('includes/navbar') %>
+                <%- include('includes/alerts') %>
+                    <%- body -%>
+            </div>
+
+    </div>
+    <script src="https://kit.fontawesome.com/a4fa4ff0b8.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

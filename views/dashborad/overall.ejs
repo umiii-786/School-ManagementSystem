@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100%;
+        }
+
+        .statistic {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0px;
+            width: 100%;
+        }
+
+        .option__icon {
+            font-size: 1.4rem;
+            transition: all 0.2s;
+            color: #6b7b93;
+        }
+
+        .overview {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .social-1,
+        .social-2,
+        .social-3,
+        .social-4,
+        .social-5 {
+            display: grid;
+            grid-template-rows: repeat(3, min-content);
+            /* padding: 1.2rem; */
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            color: #ffffff;
+            /* margin-top: 20px; */
+        }
+
+        .social-1 {
+            /* grid-column: 1 / 5; */
+            /* background-image: linear-gradient(to right, #4e88ff, #23c1fb);
+            box-shadow: 0 0.5rem 1rem rgba(5, 112, 221, 0.4); */
+            background-color: #4fc3f7;
+
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+        }
+
+        .social-2 {
+            /* grid-column: 5 / 9; */
+            /* background-image: linear-gradient(to right, #1958cb, #237ffb);
+            box-shadow: 0 0.5rem 1rem rgba(45, 116, 252, 0.4); */
+            background-color: #1976d2;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+        }
+
+        .social-3 {
+            /* grid-column: 9 / -1; */
+            /* background-image: linear-gradient(to right, #ff6363, #ff0c23);
+            box-shadow: 0 0.5rem 1rem rgba(255, 30, 48, 0.4); */
+            background-color: #e57373;
+
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-4 {
+            /* background-image: linear-gradient(to right, #ff699a, #ff2f73);
+            box-shadow: 0 0.5rem 1rem rgba(252, 43, 158, 0.4); */
+            background-color: #ff8a65;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+        }
+
+        .social-5 {
+            /* background-image: linear-gradient(to right, #915aff, #5b23fb);
+            box-shadow: 0 0.5rem 1rem rgba(112, 72, 241, 0.4); */
+            background-color: #9575cd;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-1__row-1,
+        .social-2__row-1,
+        .social-3__row-1,
+        .social-4__row-1,
+        .social-5__row-1 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+        }
+
+        .social-1__row-1 p,
+        .social-2__row-1 p,
+        .social-3__row-1 p,
+        .social-4__row-1 p,
+        .social-5__row-1 p {
+            font-size: 1.3rem;
+            display: grid;
+            justify-content: end;
+            color: #fff;
+        }
+
+        .social-1__row-2,
+        .social-2__row-2,
+        .social-3__row-2,
+        .social-4__row-2,
+        .social-5__row-2 {
+            display: grid;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .heading-1 {
+            font-size: 1.8rem;
+            color: #fff;
+
+        }
+
+
+
+
+
+        .custom-select {
+            position: absolute;
+            display: grid;
+            right: -1rem;
+        }
+
+        .custom-select select {
+            background-color: transparent;
+            border: none;
+            padding: 1rem 0;
+            width: 90px;
+            -moz-appearance: button;
+            outline: none;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .custom-select::before {
+            font-family: "Font Awesome 5 Free";
+            content: "\f107";
+            font-size: 1.7rem;
+            color: #fff;
+            top: 1.1rem;
+            right: 1rem;
+            position: absolute;
+        }
+
+        .dashboard_header_box_logos {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .graphs {
+            width: 95%;
+            margin: auto;
+        }
+
+        .row1 {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+
+<body>
+    <% layout('boilerplate') -%>
+                <div class="box">
+                    <div class="statistic">
+
+                        <div class="social-1">
+
+                            <div class="social-1__row-1">
+                                <div class="option__icon">
+                                    <img src="/images/studentslogorm.png" alt="" class="dashboard_header_box_logos">
+                                </div>
+                                <p>Students</p>
+                            </div>
+
+                            <div class="social-1__row-2">
+                                <h1 class="heading-1">13</h1>
+                            </div>
+                        </div>
+
+                        <div class="social-2">
+
+                            <div class="social-2__row-1">
+                                <div class="option__icon">
+                                    <img src="/images/teacherlogorm.png" alt="" class="dashboard_header_box_logos">
+                                </div>
+                                <p>Teachers</p>
+                            </div>
+
+                            <div class="social-2__row-2">
+                                <h1 class="heading-1">24</h1>
+                            </div>
+
+
+
+                        </div>
+<!-- 
+                        <div class="social-3">
+
+                            <div class="social-3__row-1">
+                                <div class="option__icon">
+                                    <img src="/images/stafflogorm.png" alt="" class="dashboard_header_box_logos">
+                                </div>
+                                <p>Others</p>
+                            </div>
+
+                            <div class="social-3__row-2">
+                                <h1 class="heading-1">3.4m</h1>
+                            </div>
+
+
+                        </div> -->
+
+                        <div class="social-4">
+
+                            <div class="social-4__row-1">
+                                <div class="option__icon">
+                                    <img src="/images/rupeesrm.png" alt="" class="dashboard_header_box_logos">
+                                </div>
+                                <p>Sales</p>
+                            </div>
+
+                            <div class="social-4__row-2">
+                                <h1 class="heading-1">24</h1>
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="social-5">
+
+                            <div class="social-5__row-1">
+                                <div class="option__icon">
+                                    <img src="/images/expense.webp" alt="" class="dashboard_header_box_logos">
+                                </div>
+                                <p>Expenses</p>
+                            </div>
+
+                            <div class="social-5__row-2">
+                                <h1 class="heading-1">3.4m</h1>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="graphs">
+                        <div class="row1 rows">
+                            <div class="Eachgraph">
+                                <canvas id="bar" width="400" height="400"></canvas>
+                            </div>
+                            <div class="Eachgraph">
+                                <canvas id="dognuts" height="400" width="400"></canvas>
+                            </div>
+
+                        </div>
+                        <div class="row2 rows">
+                            <div class="Eachgraph">
+                                <canvas id="line" width="900" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+
+        const bar = document.getElementById('bar');
+        const dognuts = document.getElementById('dognuts');
+        const line = document.getElementById('line');
+        new Chart(bar, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderWidth: 1
+                }]
+            },
+            Option:{
+                responsive:true
+            }
+        });
+
+        const data = {
+            labels: [
+                'Red',
+                'Blue',
+                'Yellow'
+            ],
+            datasets: [{
+                label: 'My First Dataset',
+                data: [300, 50, 100],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)'
+                ],
+                hoverOffset: 4
+            }]
+        };
+        new Chart(dognuts, {
+            type: 'doughnut',
+            data: data
+        })
+        const labels = [1, 2, 3, 4, 5,6, 7]
+        new Chart(line, {
+            type: "line",
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: [65, 59, 80, 81, 56, 55, 40],
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            }
+        })
+    </script>
+
+</body>
+
+</html>

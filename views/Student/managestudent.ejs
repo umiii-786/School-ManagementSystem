@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../CSS/searchform.css">
+    <style>
+        .image {
+            width: 80%;
+            margin: auto;
+            height: 400px;
+        }
+
+        .image img {
+            width: 100%;
+            height: 100%;
+            object-fit: none;
+        }
+
+        .records {
+            width: 90%;
+        }
+
+        .RecordHeading {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .eachrecord {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+
+        .eachrecord>a {
+            text-decoration: none;
+            width: 100px;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .manipulate_btns {
+            width: 100px;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .fa-solid,
+        .fa-regular {
+            margin-right: 5px;
+        }
+    </style>
+
+    <style>
+        table {
+            display: block;
+        }
+
+        tr,
+        td,
+        tbody,
+        thead {
+            border-collapse: collapse;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        thead {
+            display: none;
+        }
+
+        tr {
+            padding-bottom: 10px;
+        }
+
+        td {
+            padding: 10px 10px 0;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        th {
+            text-align: left;
+            font-weight: 700;
+        }
+
+        thead th {
+            background-color: #5da3ef;
+            /* color: black; */
+            border: 1px solid #5da4ef;
+            color: white;
+        }
+
+
+
+        .button {
+            display: inline-block;
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 5px;
+    color: #fff;
+    width: 100px;
+    font-weight: 600;
+    padding: 6px;
+    width: 104px;
+    text-align: center;
+}
+        
+
+
+
+
+
+
+
+
+        @media (min-width: 460px) {
+            td {
+                text-align: left;
+            }
+
+            td:before {
+                display: inline-block;
+                text-align: right;
+                width: 140px;
+            }
+
+        }
+
+        @media (min-width: 720px) {
+            table {
+                display: table;
+            }
+
+            tr {
+                display: table-row;
+            }
+
+            td,
+            th {
+                display: table-cell;
+            }
+
+            tbody {
+                display: table-row-group;
+            }
+
+            thead {
+                display: table-header-group;
+            }
+
+            tfoot {
+                display: table-footer-group;
+            }
+
+            td {
+                border: 1px solid #5da4ef;
+            }
+
+            td:before {
+                display: none;
+            }
+
+            td,
+            th {
+                padding: 10px;
+                text-align: center;
+            }
+
+
+            tfoot th {
+                display: table-cell;
+            }
+
+        }
+
+        section {
+            width: 90%;
+            margin-top: 30px;
+        }
+
+        .filter_data_section {
+            width: 100%;
+            box-shadow:
+                -3px -3px 7px #ffffff,
+                3px 3px 5px #5da3ef80,
+                inset -3px -3px 7px #ffffff,
+                inset 3px 3px 5px #5da3ef80;
+        }
+
+
+        .profile_button {
+            background-color: green;
+            color: white;
+
+        }
+
+        .edit {
+            background-color: yellow;
+            color: black;
+        }
+
+        .delete {
+            background-color: red;
+            color: white;
+        }
+
+        .button:hover {
+            opacity: 0.9;
+        }
+
+        .h1 {
+            margin: 10px 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <% layout('boilerplate') -%>
+        <h4 class="manage_heading">Student Data Filters</h4>
+        <form action="/student/manage" class="options">
+            <input type="number" name="Rollno" placeholder="search by Rollno" class="search_inputs">
+            <select name="class" id="selectboxes_Options" class="search_inputs">
+                <option>All</option>
+                <option>One</option>
+                <option>Two</option>
+                <option>Three</option>
+                <option>Four</option>
+                <option>Five</option>
+                <option>Six</option>
+                <option>Seven</option>
+                <option>Eight</option>
+                <option>Nine</option>
+                <option>Matrix</option>
+                <option>Intermediate-I</option>
+                <option>Intermediate-II</option>
+            </select>
+            <select name="section" class="search_inputs">
+                <option>All</option>
+                <option>A</option>
+                <option>B</option>
+            </select>
+            <button class="search-btn">Search</button>
+        </form>
+
+        <% if (data.length==0) { %>
+            <div class="image">
+                <img src="../../images/filterimagerm.png" alt="filter">
+            </div>
+
+            <% } else {%>
+                <section>
+                    <h1 class="h1">Filtered Data</h1>
+                    <div class="filter_data_section">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Roll-no</th>
+                                    <th>Class</th>
+                                    <th>Section</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <% for( let i=0; i < data.length; i++ ) { %>
+
+                                    <tr>
+                                        <td data-title='Provider Name'>
+                                            <i class="fa-solid fa-graduation-cap"></i>
+                                            <%= data[i].identity.username %>
+                                        </td>
+                                        <td data-title='E-mail'>
+                                            <i class="fa-regular fa-id-badge"></i></i>
+                                            <%= data[i].Rollno %>
+                                        </td>
+                                        <td data-title='E-mail'>
+                                            <i class="fa-solid fa-landmark"></i>
+                                            <%= data[i].class.className %>
+                                        </td>
+                                        <td data-title='E-mail'>
+                                            <!-- <i class="fa-solid fa-section"></i> -->
+                                            <%= data[i].section %>
+                                        </td>
+                                        <td class='select'>
+                                            <a class='button profile_button' href='/student/<%=data[i]._id  %>'>
+                                                View Profile
+                                            </a>
+                                        </td>
+                                        <td class='select'>
+
+
+                                            <a class='button edit' href='/student/edit/<%= data[i]._id %>'>
+                                                Edit
+                                            </a>
+                                        </td>
+                                        <td class='select'>
+                                            <form action="/student/<%= data[i]._id %>" method="get">
+                                                <button class='button delete' style="border:none ;">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+
+                                    <% } %>
+
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </section>
+                <% } %>
+
+
+
+
+
+</body>
+<script src="https://kit.fontawesome.com/a4fa4ff0b8.js" crossorigin="anonymous"></script>
+
+</html>

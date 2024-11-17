@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <!-- <title>Neumorphism Login Form UI | CodingNepal</title> -->
+    <link rel="stylesheet" href="/CSS/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+        .role{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .role>select {
+          
+            height: 100%;
+            width: 50%;
+            outline: none;
+            border: none;
+            font-size: 18px;
+            background: #dde1e7;
+            color: #595959;
+            border-radius: 25px;
+            box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #ffffff73;
+            padding-left: 10px;
+
+        }
+        .lbl{
+            text-align: start;
+            width: 50%;
+            font-size: 17px;
+            font-weight: bold;
+            color: #595959;;
+            margin-left: 5px;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="text">
+            Login...!
+        </div>
+        <form action="/student" method="post" class="loginForm">
+            <div class="role">
+                <span class="lbl">Role</span>
+                <select name="role" id="roleOptions">
+                    <option>Student</option>
+                    <option>Teacher</option>
+                    <option>admin</option>
+                </select>
+            </div>
+            <div class="field">
+                <input type="text" >
+                <span class="fas fa-user"></span>
+                <label>UserName</label>
+            </div>
+            <div class="field">
+                <input type="password" >
+                <span class="fas fa-lock"></span>
+                <label>Password</label>
+            </div>
+            <div class="forgot-pass">
+                <a href="#">Forgot Password?</a>
+            </div>
+            <button>Sign in</button>
+            <div class="sign-up">
+                Not a member?
+                <a href="#">signup now</a>
+            </div>
+        </form>
+    </div>
+    <script>
+      document.querySelector('#roleOptions').addEventListener('change',setMethodUrl)
+      function setMethodUrl(e){
+          let form =document.querySelector('.loginForm')
+          let value=e.target.value.toLowerCase()
+          form.setAttribute('action',`/${value}`)
+      }
+    </script>
+</body>
+
+</html>

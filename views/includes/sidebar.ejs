@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="/CSS/includesCss/sidebar.css">
+<div class="sidebar">
+    <!-- <label class="btn cancel" for="check"><i class="fas fa-times"></i></label> -->
+
+    <ul class="ul">
+        <li  onclick="showList(this)" >Dashboards  <img src="/images/downarrow.png" alt="arrow"></li> 
+         <ul class="inner_ul">
+            <li><a href="#">Student</a></li>
+            <li ><a href="#">Teacher</a></li>
+            <li><a href="#">Sales</a></li>
+        </ul> 
+    </ul>
+
+
+    <ul class="ul">
+        <li  onclick="showList(this)">Student  <img src="/images/downarrow.png" alt="arrow"></li> 
+         <ul class="inner_ul">
+            <li><a href="/student">Add Student</a></li>
+            <li ><a href="/student/TC">TC Student</a></li>
+            <li><a href="/student/manage">Manage Student</a></li>
+        </ul> 
+    </ul>
+
+    <ul class="ul">
+         <li  onclick="showList(this)">Teacher  <img src="/images/downarrow.png" alt="arrow"></li> 
+         <ul class="inner_ul">
+            <li><a href="/teacher/add">Add Teacher</a></li>
+            <li ><a href="#">Search</a></li>
+        </ul> 
+    </ul>
+
+    <ul class="ul">
+        <li  onclick="showList(this)">Class  <img src="/images/downarrow.png" alt="arrow"></li> 
+        <ul class="inner_ul">
+           <li><a href="/class/add">Add Class</a></li>
+           <li ><a href="/class/manage">Manage Class</a></li>
+       </ul> 
+   </ul>
+   
+
+</div>
+<script>
+    function showList(element){
+       let img=element.firstElementChild
+       let innerList=element.nextElementSibling
+       if(img.src.includes('downarrow.png')){
+           img.src="/images/uparrow.png"
+           innerList.style.display="block"
+       }
+       else{
+           img.src="/images/downarrow.png"
+           innerList.style.display="none"
+       }
+       
+    }
+</script>

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .options {
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .search_inputs {
+            width: 90%;
+            padding: 10px;
+            border-radius: 4px;
+            outline: none;
+            background: transparent;
+            box-shadow: -3px -3px 7px #ffffff, 3px 3px 5px #ceced1, inset -3px -3px 7px #ffffff, inset 3px 3px 5px #ceced1;
+            border: none;
+        }
+
+        .label {
+            font: 800;
+            color: #3498db;
+            font-size: 20px;
+            margin: 10px 0px;
+            font-weight: bolder;
+        }
+    </style>
+
+    <style>
+        .courses {
+
+            width: 90%;
+            box-shadow: 0px 0px 7px 0px rgb(189, 192, 189);
+            min-height: 30vh;
+            margin-top: 30px;
+            padding: 20px;
+            visibility: hidden;
+            transition: all 1s linear;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .subjectlogo {
+            width: 100%;
+            height: 150px;
+            object-fit: contain;
+        }
+
+        .addTask {
+            /* display: flex; */
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .inputs {
+            width: 40%;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0px 0px 7px 0px rgb(189, 192, 189);
+            background: transparent;
+            border: 0px;
+            outline: none;
+        }
+
+
+        .todolist {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .addtask-btn {
+            width: 120px;
+            padding: 8px 0px;
+            background-color: black;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .heading {
+            color: #0c91eb;
+        }
+
+        .sub-heading {
+            font: 700;
+            margin: 10px;
+        }
+
+        .list {
+
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0px;
+            margin: 20px 0px;
+            box-shadow: 0px 0px 7px 0px rgb(189, 192, 189);
+
+
+        }
+
+        .values_input {
+            width: 40%;
+            margin: 0px 10px;
+            background: transparent;
+            border: none;
+            outline: none;
+            padding-left: 10px;
+        }
+
+        .span-btns {
+            width: 110px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .span-btns span {
+            margin: 0px 10px;
+            cursor: pointer;
+        }
+
+        .values_input::before {
+            content: "➤";
+            position: relative;
+            left: -10px;
+
+        }
+
+        .values_input:first-child {
+            margin-left: 20px;
+        }
+
+        .editinput {
+            margin-left: 20px;
+            padding: 6px 10px;
+            outline: none;
+        }
+
+        .course_btns {
+            padding: 10px;
+            font-weight: 900;
+            font-size: 16px;
+
+            border: none;
+            border-radius: 4px;
+            width: 180px;
+            margin: 20px 0px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .create-section {
+            background-color: #0c91eb;
+        }
+
+        .donebutton {
+            background-color: rgb(21, 219, 21);
+            margin-top: 5px;
+
+        }
+
+        .teahername {
+            width: 90%;
+            margin: 10px 0px;
+        }
+
+        .eachsection_Inputs {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .addsection-btn {
+            width: 70px;
+            padding: 5px 0px;
+            background-color: black;
+            color: white;
+            font-weight: 700;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 20px 0px;
+        }
+
+        .Teacher_card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 150px;
+            height: 150px;
+            box-shadow: 0px 0px 7px 0px rgb(189, 192, 189);
+            background: transparent;
+            position: relative;
+            margin: 15px 0px;
+        }
+
+        .Teacher_card:nth-child(2) {
+            margin: 15px 20px;
+        }
+
+        .class_teacher_img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .card_teachername {
+            padding: 0px 4px;
+            font-size: 15px;
+            text-align: center;
+            font-weight: 600;
+            color: #0c91eb;
+        }
+
+        .cross {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .section_def_span {
+            font-size: 14px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .section_name {
+            color: #0c91eb;
+            margin-left: 5px;
+        }
+
+        .sectionList {
+            display: flex;
+        }
+
+        .errormsg {
+            color: red;
+            font-size: 15px;
+
+        }
+
+        .class_section_fields {
+            display: none;
+        }
+
+        .sectioninputs {
+            margin: 7px 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <% layout('boilerplate') -%>
+        <form class="options" action="/class/add" method="post">
+            <label class="label heading">Create Class</label>
+            <select name="className" id="selectboxes_Options" class="search_inputs" onchange="show_Subject_Option(this)">
+
+                <option>Chooose Class ....!</option>
+                <% for( let i=0; i <Allclasses .length; i++ ) { %>
+                    <option>
+                        <%= Allclasses[i] %>
+                    </option>
+                    <% } %>
+
+            </select>
+
+            <div class="courses">
+                <img src="../../images/coursesrm.png" alt="courses" class="subjectlogo">
+                <h4 class="sub-heading heading">Add Upto 7 Courses</h4>
+                <div class="todolist">
+                    <div class="addTask">
+                        <input type="text" placeholder="Subject name" class="listinputs inputs ">
+                        <select id="selectboxes_Options" class=" listinputs inputs">
+                            <option>Chooose Subject Teacher</option>
+                            <% for( let i=0; i < Available_teachers.length; i++ ) { %>
+                                <option>
+                                    <%= Available_teachers[i].username %>
+                                </option>
+
+                                <% } %>
+                        </select>
+                        <!-- <input type="text" placeholder="Subject Teacher" class="listinputs inputs "> -->
+                        <button class="addtask-btn" onclick="addTask()" type="button"> ➕ Add</button>
+                    </div>
+                    <div class="lists" id="taskList">
+
+                    </div>
+                    <button class="create-section course_btns" onclick="showSection()"
+                        type="button">Class-Sections</button>
+                    <div class="class_sections">
+
+                        <div class="class_section_fields">
+                            <div class="eachsection_Inputs">
+                                <select class=" sectioninputs inputs" id="section_options">
+                                    <option>Select Section ....!</option>
+                                    <option>A</option>
+                                    <option>B</option>
+                                </select>
+                                <select class=" sectioninputs inputs">
+                                    <option>Chooose Class Teacher</option>
+                                    <% for( let i=0; i < Available_teachers.length; i++ ) { %>
+                                        <option>
+                                            <%= Available_teachers[i].username %>
+                                        </option>
+
+                                        <% } %>
+                                </select>
+                                <button class="addsection-btn" type="button" onclick="addsection()"> Add</button>
+                            </div>
+                        </div>
+
+                        <div class="sectionList">
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <error class="errormsg"></error>
+                <button class="donebutton course_btns" onclick="done()" type="button">Submit</button>
+            </div>
+
+
+
+
+        </form>
+
+
+        <script>
+
+            let selectedClass;
+            let class_sections = document.querySelector('.class_section_fields')
+            let sectionList = document.querySelector('.sectionList')
+            let taskList = document.querySelector("#taskList")
+            let form = document.querySelector(".options")
+            let courses_section = document.querySelector('.courses')
+            let errordiv = document.querySelector('.errormsg')
+            let class_section_options = document.getElementById('section_options')
+
+
+            let subject_count=1
+            let section_count=1
+            function remove_section_Card(element) {
+                element.parentElement.remove()
+            }
+
+            function addsection() {
+                let section = document.querySelectorAll('.sectioninputs')[0]
+                let teachername = document.querySelectorAll('.sectioninputs')[1]
+                if (section.value.trim() !== "" && section.value != "Select Section ....!" &&
+                    teachername.value.trim() !== "" && teachername.value != "Chooose Class Teacher") {
+                    sectionList.innerHTML += ` <div class="Teacher_card">
+                                <img src="../../images/classTeacherlogorm.png" alt="classTeacher"
+                                    class="class_teacher_img">
+                                <span class="card_teachername">${teachername.value}</span>
+                                <span class="section_def_span">Section:<span class="section_name">${section.value}</span></span>
+                                <input type="hidden" name="sections[${section_count}][section]" value="${section.value}">
+                                <input type="hidden" name="sections[${section_count}][classTeacher]" value="${teachername.value}">
+                                <span class="cross" onclick="remove_section_Card(this)">X</span>
+                            </div>`
+                    class_sections.style.display = "none"
+                    section_count += 1
+                }
+
+            }
+
+
+            function showSection() {
+
+
+                let childs = sectionList.childElementCount
+                if (childs == 0) {
+                    class_sections.style.display = "block"
+                    // class_sections.innerHTML += ` `
+
+                }
+                else if (childs == 1) {
+                    let section_name = document.querySelector('.section_name').innerText
+                    class_sections.style.display = "block"
+                    let options = class_section_options.children
+                    for (let i = 0; i < options.length; i++) {
+                        if (options[i].innerText == section_name) options[i].remove()
+                    }
+
+                }
+            }
+
+
+
+            function done() {
+
+                let check = taskList.childElementCount
+                if (check > 0 && check <= 7) {
+                    let sectioncount = sectionList.childElementCount
+                    if (sectioncount == 2) {
+                        form.submit()
+                    }
+                    else {
+                        errordiv.innerHTML = "Class Must have their Sections"
+                    }
+
+                }
+                else {
+                    errordiv.innerHTML = "Class must have atleast 1 and atmost 7 subjects"
+                }
+
+            }
+
+
+
+            function show_Subject_Option(element) {
+                let value = element.value;
+                if (value == "Chooose Class ....!") {
+                    courses_section.style.visibility = "hidden"
+                }
+                else {
+                    selectedClass=value
+                    courses_section.style.visibility = "visible"
+
+                }
+            }
+
+            
+            function addTask() {
+                const taskInput1 = document.querySelectorAll(".listinputs")[0];
+                const taskInput2 = document.querySelectorAll(".listinputs")[1];
+
+                if (taskInput1.value.trim() !== "" && taskInput2.value.trim() !== ""
+                    && taskInput2.value != "Chooose Subject Teacher") {
+                    console.log(taskInput1.value, taskInput2.value)
+                    taskList.innerHTML += `<div class="list">
+          <input class="values_input no-cursor" name="subjects[${subject_count}][subject]" readonly 
+          value="${taskInput1.value}">
+          <input class="values_input no-cursor" name="subjects[${subject_count}][subjectTeacher]" readonly 
+          value="${taskInput2.value}">
+          <input class="values_input no-cursor" style="display:none" name="subjects[${subject_count}][CorrespondClass]" readonly 
+          value="${selectedClass}">
+          <div class="span-btns">
+            <span onclick="deleteTask(this)">❌</span>
+          </div>
+          </div>
+        `;
+                   
+                    taskInput1.value = "";
+                    subject_count+=1
+                }
+            }
+
+            // function Editsubject(element) {
+            //     let clicked_parent = document.querySelector('.span-btns')
+            //     let second_element = element.parentElement.previousElementSibling
+            //     let first_element = second_element.previousElementSibling
+
+            //     element.remove()
+            //     first_element.removeAttribute('readonly')
+            //     second_element.removeAttribute('readonly')
+            //     first_element.style.border = "1px solid black"
+            //     second_element.style.border = "1px solid black"
+            //     clicked_parent.innerHTML += '<span onclick="confirmEdited(this)" >✔️</span>'
+            // }
+
+            // function confirmEdited(element) {
+            //     let clicked_parent = document.querySelector('.span-btns')
+            //     let second_element = element.parentElement.previousElementSibling
+            //     let first_element = second_element.previousElementSibling
+
+            //     element.remove()
+            //     first_element.setAttribute('readonly', true)
+            //     second_element.setAttribute('readonly', true)
+            //     first_element.style.border = "0px"
+            //     second_element.style.border = "0px"
+            //     clicked_parent.innerHTML += '<span onclick="Editsubject(this)" >✏️</span>'
+            // }
+
+            function deleteTask(element) {
+                const taskItem = element.closest(".list");
+                taskItem.remove();
+            }
+
+
+
+
+        </script>
+</body>
+
+</html>
