@@ -1,4 +1,5 @@
 
+// const { required } = require('joi');
 const mongoose=require('mongoose')
 mongoose.connect('mongodb://127.0.0.1:27017/School')
 const Teacher_Schema=new mongoose.Schema({
@@ -7,12 +8,12 @@ const Teacher_Schema=new mongoose.Schema({
         ref:"User",
         required:true,
     },
-    father_name:{
+    username:{
         type:String,
         required:true
     },
-    cnic:{
-        type:Number,
+    father_name:{
+        type:String,
         required:true
     },
     phone:{
@@ -37,7 +38,7 @@ const Teacher_Schema=new mongoose.Schema({
     },
     lectures:{
         type:[mongoose.Schema.ObjectId],
-        ref:"Subject",
+        ref:"Lecture",
         validate: {
             validator: function (v) {
                 return v.length >= 0 && v.length <= 7;
@@ -46,5 +47,8 @@ const Teacher_Schema=new mongoose.Schema({
         }
     } 
 })
-module.exports.Teacher=mongoose.model('Teacher',Teacher_Schema)
+const Teacher=mongoose.model('Teacher',Teacher_Schema)
+module.exports={
+    Teacher,
+}
 // Teacher.insertMany(teachers).then((dt)=>console.log("inserted data"))

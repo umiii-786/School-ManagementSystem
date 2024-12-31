@@ -10,7 +10,6 @@
     width: 90%;
     display: flex;
     flex-direction: column;
-    /* position: relative; */
     transition: all 0.5s linear;
 }
 
@@ -34,8 +33,7 @@ li {
     display: flex;
     justify-content: center;
     padding: 10px 12px;
-    box-shadow: -3px -3px 7px #ffffff,
-        3px 3px 5px #ceced1;
+    box-shadow: var( --sidebutton-boxshadow);
     transition: all 0.3s ease;
     width: 90%;
     margin: 15px 0px;
@@ -59,12 +57,12 @@ li {
 
 li>a {
     text-decoration: none;
-    color: #31344b;
+    color: var(--sidebutton-color);
     font-weight: 400;
     font-size: 18px;
 }
 
-.ul a:hover:before {
+/* .ul a:hover:before {
     content: '';
     position: absolute;
     top: 0;
@@ -73,7 +71,7 @@ li>a {
     bottom: 0;
     box-shadow: inset -3px -3px 7px #ffffff,
         inset 3px 3px 5px #ceced1;
-}
+} */
 .ul>li:hover:before{
     content: '';
     position: absolute;
@@ -81,11 +79,12 @@ li>a {
     left: 0;
     right: 0;
     bottom: 0;
-    box-shadow: inset -3px -3px 7px #ffffff,
-    inset 3px 3px 5px #ceced1;
+    box-shadow:var(--sidebuttonHover-shadow);
+    
 }
 .ul>li{
     font-size: 18px;
+    color: var(--sidebutton-color);
 }
 
 li>a:hover {

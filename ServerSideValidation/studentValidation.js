@@ -1,14 +1,13 @@
 const joi=require('joi')
 const studentschemaValidate=joi.object({
-    // identity:joi.string().required(),
-    father_name:joi.string().required(),
-    cnic:joi.number().required(),
+    username:joi.string().required().trim(),
+    father_name:joi.string().required().trim(),
     phone:joi.number().required(),
-    gender:joi.string().required(),
-    DOB:joi.string().required(),
-    class:joi.string().required(),
-    section:joi.string().required(),
-    Rollno:joi.number().required()
+    gender:joi.string().valid("Male","Female","Custom").required(),
+    DOB:joi.string().required().trim(),
+    class:joi.string().required().trim(),
+    section:joi.string().required().trim(),
+   
 })
 
 module.exports.studentschemaValidate=studentschemaValidate;

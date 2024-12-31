@@ -18,10 +18,12 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     width: 80%;
+    /* box-shadow: 5px 5px 30px rgb(4, 4, 4),
+                   -5px -5px 30px rgb(57, 57, 57); */
 }
 
 /* Profile Section */
-.profile-section {
+/* .profile-section {
     background: linear-gradient(to right, #ee5a6f, #f29263);
     color: #fff;
     padding: 2rem;
@@ -30,15 +32,18 @@ body {
     justify-content: center;
     flex-direction: column;
     width: 250px;
-}
+} */
 .profile-details{
     text-align: center;
+    position: relative;
 }
 
 .profile-img {
     width: 100px;
     border-radius: 50%;
     margin-bottom: 1rem;
+    height: 100px;
+    object-fit: cover;
 }
 
 .name {
@@ -52,15 +57,24 @@ body {
 }
 
 .icon-edit {
-    font-size: 16px;
+    position: absolute;
+    font-size: 22px;
     cursor: pointer;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
+    top: 6px;
+    left: 60px;
+    color: black;
+    background: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30p
 }
 
 /* Info Section */
 .info-section {
     flex: 2;
     padding: 1.5rem;
+    background: var(--bg-color);
 }
 
 .info h6,

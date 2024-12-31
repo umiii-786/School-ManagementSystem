@@ -7,9 +7,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-
-/* .content */
-
 .text {
     display: flex;
     justify-content: space-between;
@@ -98,7 +95,7 @@
         inset -5px -5px 10px #ffffff73;
 }
 
-.content {
+/* .content {
     margin: auto;
 
     width: 70%;
@@ -109,7 +106,7 @@
   border-radius: 10px;
   box-shadow: -3px -3px 7px #ffffff73,
       2px 2px 5px rgba(94, 104, 121, 0.288); */
-}
+/* } */ */
 
 .flex_property {
     display: flex;
@@ -138,15 +135,7 @@
 
 }
 
-.lbl {
-    text-align: start;
-    width: 50%;
-    font-size: 16px;
-    font-weight: bold;
-    color: #595959;
-    ;
-    margin-left: 5px;
-}
+
 
 .field:nth-child(1),
 .field:nth-child(4),
@@ -162,12 +151,5 @@
 
 }
 
-input[type="number"].no-spinners::-webkit-outer-spin-button,
-input[type="number"].no-spinners::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
 
-input[type="number"].no-spinners {
-    -moz-appearance: textfield;
-}
+

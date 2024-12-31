@@ -1,7 +1,7 @@
 const joi=require('joi')
 const teacherSchemaValidation=joi.object({
-    father_name:joi.string().required(),
-    cnic:joi.number().required(),
+    username:joi.string().required().trim(),
+    father_name:joi.string().required().trim(),
     phone:joi.number().required(),
     gender:joi.string().valid("Male","Female","Custom").required(),
     age:joi.number().min(18).max(65).required(),

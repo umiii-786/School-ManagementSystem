@@ -3,7 +3,6 @@ function validateForm() {
     let error_labels = document.querySelectorAll('.error-label')
     let count = 0
     for (let i = 0; i < controls.length; i++) {
-        // console.log(controls[controls.length-1].value)
         if (controls[i].value == "") {
             error_labels[i].innerHTML = "Field Should not be Empty"
         }

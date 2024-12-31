@@ -15,78 +15,124 @@
             background: transparent;
             border: 1px solid rgb(207, 193, 193);
             outline: none;
+            color: var(--sidebutton-color);
         }
-        .headerSection{
+
+        .headerSection {
             display: flex;
             align-items: center;
             margin: 30px;
             margin-bottom: 10px;
         }
-        .h1{
+
+        .h1 {
             margin-left: 50px;
-    text-shadow: 1px 16px 9px rgb(53, 49, 49);
-    font-size: 35px;
+            /* text-shadow: 1px 16px 9px rgb(53, 49, 49); */
+            font-size: 35px;
+            color: var(--tableColor)
         }
-        .submit{
-            background-color: #f0736a;
-    padding: 10px;
-    border: 0px;
-    font-size: 17px;
-    font-weight: 600;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
+
+        .submit {
+            background-color: var(--tableColor);
+            padding: 10px;
+            border: 0px;
+            font-size: 17px;
+            font-weight: 600;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
         }
-        .submit:hover{
+
+        .submit:hover {
             background-color: #fd7066;
         }
 
-        .tagname{
+        .tagname {
             font-size: 22px;
             font-weight: bold;
+            color:var(--tableColor);
         }
-        .fieldContainer{
+
+        .fieldContainer {
             display: flex;
             flex-direction: column;
         }
-        .error-label{
+
+        .error-label {
             font-size: 13px;
             color: rgb(252, 69, 69);
+        }
+        .profile-section{
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+            align-items: center;
+        }
+
+        .profile-section .img {
+           
+            height: 150px;
+            margin-top: 1.6em;
+            aspect-ratio: 1;
+            border-radius: 49%;
+            background: #f2f2f3;
+            margin-bottom: 0.4em;
+            box-shadow: var(--profileIconShadow)
+        }
+        select>option{
+            color: black;
+        }
+        .subheading{
+            font-size: 14px;
+            color: var(--sidebutton-color);
+        }
+        .section_name{
+            font-size: 12px;
         }
     </style>
 </head>
 
 <body>
     <%- include('../includes/navbar.ejs') %>
-        <div class="container">
-            <div class="card user-card">
+    <div class="container">
+        <div class="card user-card">
+                <%- include('../includes/alerts.ejs') %>
 
                 <div class="headerSection">
-                <div class="profile-section">
-                    <div class="profile-details text-center">
-                        <img src="<%= data.profileImg %>" alt="User Profile" class="profile-img">
+                    <!-- <div class="profile-details text-center">
+                       
+                    </div> -->
+                    <div class="profile-section">
+
+                        <div class="img">
+                            <img src="<%= data.profileImg %>" alt="User Profile" class="profile-img">
+                        </div>
                         <h4 class="tagname">
                             <%= data.identity.Role %>
                         </h4>
+                        <h3 class="subheading">Class :<%= data.class.className %></h3>
+                        <h4 class="subheading section_name">Section : <%= data.section %> </h4>
+                        
+
                     </div>
+                    <!-- </div> -->
+                    <h1 class="h1">Let's Make Changes</h1>
                 </div>
-                <h1 class="h1">Let's Make Changes</h1>
-            </div>
-                <form class="info-section registerForm" method="post" action="/student/<%= data.id %>?_method=PUT">
+                <form class="info-section registerForm" action="/student/<%= data.id %>?_method=PUT" method="post">
                     <div class="info">
                         <h6>Information</h6>
                         <div class="info-row">
                             <div>
                                 <p>Name</p>
-                                <h6  class="fieldContainer"><input type="text" class="controls inputs" name="username"
-                                        value="<%= data.identity.username %>">
-                                        <label class="error-label"></label>
-                                    </h6>
+                                <h6 class="fieldContainer"><input type="text" class="controls inputs" name="username"
+                                        value="<%= data.username %>">
+                                    <label class="error-label"></label>
+                                </h6>
                             </div>
                             <div>
                                 <p>Gender</p>
-                                <h6 class="fieldContainer"><select name="gender" id="roleOptions" class="controls inputs"
-                                        value="<%= data.gender %>">
+                                <h6 class="fieldContainer"><select name="gender" id="roleOptions"
+                                        class="controls inputs" value="<%= data.gender %>">
                                         <option>Male</option>
                                         <option>Female</option>
                                         <option>Custom</option>
@@ -98,14 +144,15 @@
                         <div class="info-row">
                             <div>
                                 <p>Father</p>
-                                <h6 class="fieldContainer"> <input type="text" class="controls inputs" name="father_name"
-                                        value="<%= data.father_name %>">
-                                        <label class="error-label"></label>
-                                    </h6>
+                                <h6 class="fieldContainer"> <input type="text" class="controls inputs"
+                                        name="father_name" value="<%= data.father_name %>">
+                                    <label class="error-label"></label>
+                                </h6>
                             </div>
                             <div>
                                 <p>Date Of Birth</p>
-                                <h6 class="fieldContainer"><input type="date" class="controls inputs" name="DOB" value="<%= data.DOB %>">
+                                <h6 class="fieldContainer"><input type="date" class="controls inputs" name="DOB"
+                                        value="<%= data.DOB %>">
                                     <label class="error-label"></label>
                                 </h6>
                             </div>
@@ -113,7 +160,8 @@
                         <div class="info-row">
                             <div>
                                 <p>Cnic</p>
-                                <h6 class="fieldContainer"><input type="number" class="controls inputs" name="cnic" value="<%= data.cnic %>">
+                                <h6 class="fieldContainer"><input type="number" class="controls inputs" name="cnic"
+                                        value="<%= data.identity.cnic %>">
                                     <label class="error-label"></label>
                                 </h6>
                             </div>
@@ -121,41 +169,25 @@
                                 <p>Phone</p>
                                 <h6 class="fieldContainer"><input type="number" class="controls inputs" name="phone"
                                         value="0<%= data.phone %>">
-                                        <label class="error-label"></label>
-                                    </h6>
+                                    <label class="error-label"></label>
+                                </h6>
                             </div>
                         </div>
-
-                    </div>
-                    <div class="projects">
-                        <h6>Academic</h6>
                         <div class="info-row">
                             <div>
-                                <p>class</p>
-                                <h6 class="fieldContainer">
-                                    <select name="class" id="selectboxes_Options" class="controls inputs" value="<%= data.class.className %>">
-                                        <% for( let i=0; i < Available_Classes.length; i++ ) { %>
-                                            <option>
-                                                <%= Available_Classes[i].className %>
-                                            </option>
+                                <p>Rollno</p>
+                                <h6 class="fieldContainer"> <input type="number" class="controls inputs" name="Rollno"
+                                        value="<%= data.Rollno %>">
+                                    <label class="error-label"></label>
+                                </h6>
+                            </div>
 
-                                            <% } %>
-                                    </select>
-                                    <label class="error-label"></label>
-                                </h6>
-                            </div>
-                            <div>
-                                <p>Section</p>
-                                <h6  class="fieldContainer"><select name="section" class="controls inputs" value="<%= data.section %>">
-                                        <option>A</option>
-                                        <option>B</option>
-                                    </select>
-                                    <label class="error-label"></label>
-                                </h6>
-                            </div>
+                            <input type="text" style="display: none;" name="class" value="<%= data.class._id %>">
+                            <input type="text" style="display: none;" name="section" value="<%= data.section %>">
                         </div>
+
                     </div>
-                    <button class="submit" type="button" onclick="validateForm()" >Confirm</button>
+                    <button class="submit" type="button" onclick="validateForm()">Confirm</button>
                 </form>
             </div>
         </div>

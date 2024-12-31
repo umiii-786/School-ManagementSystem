@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .options {
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /*  .search_inputs {
+            width: 90%;
+            padding: 10px;
+            border-radius: 4px;
+            outline: none;
+            background: transparent;
+            box-shadow:var(--box-shadow-color);
+            border: none;
+            color: var(--sidebutton-color);
+        }
+        .search_inputs>option{
+            color: black;
+        }
+
+        .label {
+            font: 800;
+            color: #3498db;
+            font-size: 20px;
+            margin: 10px 0px;
+            font-weight: bolder;
+        } */
+    </style>
+
+    <style>
+        /* .courses {
+
+            width: 90%;
+            box-shadow: var(--classSection-Shadow);
+            min-height: 30vh;
+            margin-top: 30px;
+            padding: 20px;
+            visibility: hidden;
+            transition: all 1s linear;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .subjectlogo {
+            width: 100%;
+            height: 150px;
+            object-fit: contain;
+        } */
+
+        .addTask {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .inputs {
+            width: 41%;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: var(--classSection-Shadow);
+            background: transparent;
+            border: 0px;
+            outline: none;
+            color: var(--sidebutton-color);
+            margin: 0px 10px;
+        }
+
+
+        /* .todolist {
+            display: flex;
+            flex-direction: column;
+        } */
+
+        .addtask-btn {
+            width: 120px;
+            padding: 12px 0px;
+            background-color: black;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .heading {
+            color: var(--tableColor);
+            font-weight: bolder;
+        }
+
+        .sub-heading {
+            font: 700;
+            margin: 10px;
+        }
+
+        .list {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0px;
+            margin: 20px 0px;
+            box-shadow: 0px 0px 7px 0px rgb(189, 192, 189);
+        }
+
+        .values_input {
+            width: 40%;
+            margin: 0px 10px;
+            background: transparent;
+            border: none;
+            outline: none;
+            padding-left: 10px;
+            color: var(--sidebutton-color);
+        }
+
+        .span-btns {
+            width: 110px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .span-btns span {
+            margin: 0px 10px;
+            cursor: pointer;
+        }
+
+        .values_input::before {
+            content: "➤";
+            position: relative;
+            left: -10px;
+
+        }
+
+        .values_input:first-child {
+            margin-left: 20px;
+        }
+
+        .editinput {
+            margin-left: 20px;
+            padding: 6px 10px;
+            outline: none;
+        }
+
+        .course_btns {
+            padding: 10px;
+            font-weight: 900;
+            font-size: 16px;
+
+            border: none;
+            border-radius: 4px;
+            width: 180px;
+            margin: 20px 0px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .create-section {
+            background-color: var(--tableColor);
+
+        }
+
+        .donebutton {
+            background-color: rgb(21, 219, 21);
+            margin-top: 5px;
+
+        }
+
+        /* .teahername {
+            width: 90%;
+            margin: 10px 0px;
+        }
+
+        .eachsection_Inputs {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .addsection-btn {
+            width: 70px;
+            padding: 5px 0px;
+            background-color: black;
+            color: white;
+            font-weight: 700;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 20px 0px;
+        }
+
+        .Teacher_card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 150px;
+            height: 150px;
+            box-shadow: var(--classSection-Shadow);
+            background: transparent;
+            position: relative;
+            margin: 15px 0px;
+        }
+
+        .Teacher_card:nth-child(2) {
+            margin: 15px 20px;
+        }
+
+        .class_teacher_img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .card_teachername {
+            padding: 0px 4px;
+            font-size: 15px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--tableColor);
+        }
+
+        .cross {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .section_def_span {
+            font-size: 14px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .section_name {
+            color:var(--tableColor);
+            margin-left: 5px;
+        }
+
+        .sectionList {
+            display: flex;
+        }
+
+        .errormsg {
+            color: red;
+            font-size: 15px;
+
+        }
+
+        .class_section_fields {
+            display: none;
+        }
+
+        .sectioninputs {
+            margin: 7px 0px;
+        }
+        select>option{
+            color: black;
+        } */
+    </style>
+    <style>
+        table {
+            display: none;
+            margin-top: 20px;
+        }
+
+        tr,
+        td,
+        tbody,
+        tfoot {
+            display: block;
+        }
+
+        thead {
+            display: none;
+        }
+
+        tr {
+            padding-bottom: 10px;
+        }
+
+        td {
+            color: var(--sidebutton-color);
+            padding: 10px 10px 0;
+            text-align: center;
+        }
+
+        td:before {
+            content: attr(data-title);
+            color: #7a91aa;
+            text-transform: uppercase;
+            font-size: 1.4rem;
+            padding-right: 10px;
+            display: block;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        th {
+            text-align: left;
+            font-weight: 700;
+        }
+
+        thead th {
+            background-color: #202932;
+            color: #fff;
+            border: 1px solid #202932;
+        }
+
+        tfoot th {
+            display: block;
+            padding: 10px;
+            text-align: center;
+            color: #b8c4d2;
+        }
+
+        @media (min-width: 460px) {
+            td {
+                text-align: left;
+            }
+
+            td:before {
+                display: inline-block;
+                text-align: right;
+                width: 140px;
+            }
+
+            .select {
+                padding-left: 160px;
+            }
+        }
+
+        @media (min-width: 720px) {
+            table {
+                display: table;
+            }
+
+            tr {
+                display: table-row;
+            }
+
+            td,
+            th {
+                display: table-cell;
+            }
+
+            tbody {
+                display: table-row-group;
+            }
+
+            thead {
+                display: table-header-group;
+            }
+
+            tfoot {
+                display: table-footer-group;
+            }
+
+            td {
+                border: 1px solid #28333f;
+            }
+
+            td:before {
+                display: none;
+            }
+
+            td,
+            th {
+                padding: 10px;
+            }
+
+            tr:nth-child(2n+2) td {
+                background-color: #242e39;
+            }
+
+            tfoot th {
+                display: table-cell;
+            }
+        }
+
+        .semester {
+            margin: 20px 0px;
+        }
+
+        #deptname {
+            width: 97%;
+        }
+
+        .delete-btn {
+            padding: 10px;
+            border-radius: 8px;
+            color: white;
+            background-color: red;
+            border: none;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            border: 1px solid red;
+            background: none;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <% layout('boilerplate') -%>
+        <form class="options" action="/class/add" method="post">
+            <label class="heading sub-heading">ADD Department</label>
+
+            <input type="text" name="Department_name" id="deptname" class="listinputs inputs"
+                placeholder="Enter the Department Name.....!">
+            <!-- <button onclick="show_Subject_Option()" class="addtask-btn" style="margin-top: 20px;">Make Semester</button> -->
+            <!-- </select> -->
+            <div class="semester">
+                <h4 class="heading sub-heading">Create Subject for Semester: <span id="count">1</span></h4>
+                <input type="text" placeholder="Enter Course" class="listinputs inputs ">
+                <input type="text" placeholder="Enter Course Category" class="listinputs inputs ">
+                <button class="addtask-btn" id="addCourse" type="button"> Add</button>
+
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                S:no
+                            </th>
+                            <th>
+                                Course
+                            </th>
+                            <th>Category</th>
+                            <th>Credit Hour</th>
+                        </tr>
+                    </thead> 
+
+                    <tbody id="tableBody">
+                
+                    </tbody>
+                </table>
+
+
+                <button class="donebutton course_btns"  type="button">Submit</button>
+                <!-- <button class="done">Done</button> -->
+            </div>
+
+
+
+            <!-- <div class="courses">
+                <img src="../../images/coursesrm.png" alt="courses" class="subjectlogo">
+                <h4 class="sub-heading heading">Add the Details</h4>
+                <div class="todolist">
+                    <div class="addTask">
+                        
+                        <select id="selectboxes_Options" class=" listinputs inputs">
+                            <option>Chooose Subject Teacher</option>
+                           
+                        </select>
+                        <input type="text" placeholder="Subject Teacher" class="listinputs inputs ">
+                       
+                    </div>
+                    <div class="lists" id="taskList">
+
+                    </div>
+                    <button class="create-section course_btns" style="text-align: center;" onclick="showSection()"
+                        type="button">Sections <img src="../../images/sectionlogo.png" style="width: 30px;"></button>
+                    <div class="class_sections">
+
+                        <div class="class_section_fields">
+                            <div class="eachsection_Inputs">
+                                <select class=" sectioninputs inputs" id="section_options">
+                                    <option>Select Section ....!</option>
+                                    <option>A</option>
+                                    <option>B</option>
+                                </select>
+                                <select class=" sectioninputs inputs">
+                                    <option>Chooose Class Teacher</option>
+                                  
+                                </select>
+                                <button class="addsection-btn" type="button" onclick="addsection()"> Add</button>
+                            </div>
+                        </div>
+
+                        <div class="sectionList">
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <error class="errormsg"></error>
+                <button class="donebutton course_btns" onclick="done()" type="button">Submit</button>
+            </div>  -->
+        </form>
+
+        <script>
+
+
+            let inputs = document.querySelectorAll('.inputs')
+            let SR = 0;
+            let Selected_courses=[]
+            let tableBody = document.getElementById('tableBody')
+            document.getElementById('addCourse').addEventListener('click', addCourse)
+            function addCourse() {
+                if (inputs[1].value != "" && inputs[2].value != "") {
+                    ++SR
+                    const element=Selected_courses.find(ele => ele ==inputs[1].value);
+
+                    if(element==undefined){
+                    Selected_courses.push(inputs[1].value)
+                    tableBody.innerHTML += `  <tr class="rows">
+                            <td> ${SR})</td>
+                            <td data-title='Provider Name'>
+                                ${inputs[1].value}
+                            </td>
+                            <td data-title='E-mail'>
+                                 ${inputs[2].value}
+                            </td>
+                            <td class='select'>
+                                <button class="delete-btn" onclick="deleteCourse(${SR})">Delete</button>
+                            </td>
+                        </tr>   `
+
+                        inputs[1].value=""
+                        inputs[2].value=""
+                    }
+                }
+                    else{
+                        
+                    }
+            
+
+            }
+
+
+
+
+
+            // let selectedClass;
+            // let class_sections = document.querySelector('.class_section_fields')
+            // let sectionList = document.querySelector('.sectionList')
+            // let taskList = document.querySelector("#taskList")
+            // let form = document.querySelector(".options")
+            // let courses_section = document.querySelector('.courses')
+            // let errordiv = document.querySelector('.errormsg')
+            // let class_section_options = document.getElementById('section_options')
+            // let ClassNameInput = document.querySelector('.selected_class')
+
+
+            // let subject_count = 1
+            // let section_count = 1
+            function deleteCourse(indx) {
+                document.getElementsByClassName('rows')[indx-1].remove()
+            }
+
+
+
+            // const Preserved_data =<% - JSON.stringify(class_data) %>;
+            // console.log(Preserved_data)
+            // //   console.log(preserved_class_data)
+            // if (Preserved_data) {
+            //     ClassNameInput.value = Preserved_data.className
+            //     show_Subject_Option(ClassNameInput)
+
+            //     let Already_Added_section = Preserved_data.sections
+            //     let Already_Added_subjects = Preserved_data.subjects
+            //     console.log(Already_Added_section)
+            //     console.log(Already_Added_subjects)
+            //     for (let i = 0; i < Already_Added_subjects.length; i++) {
+
+            //         returnSubject(Already_Added_subjects[i].subject, Already_Added_subjects[i].subjectTeacher)
+            //     }
+
+            //     for (let i = 0; i < Already_Added_section.length; i++) {
+            //         console.log("section ma hn")
+            //         returnSection(Already_Added_section[i].section, Already_Added_section[i].classTeacher)
+            //     }
+
+
+            // }
+
+
+            // function addsection() {
+            //     let section = document.querySelectorAll('.sectioninputs')[0].value
+            //     let teachername = document.querySelectorAll('.sectioninputs')[1].value
+            //     returnSection(section, teachername)
+
+            // }
+
+            // function returnSection(section_name, teacher_name) {
+            //     console.log("bhai section ma 2")
+            //     let section = section_name;
+            //     let teachername = teacher_name
+            //     console.log(section)
+            //     console.log(teachername)
+            //     if (section.trim() !== "" && section != "Select Section ....!" &&
+            //         teachername.trim() !== "" && teachername != "Chooose Class Teacher") {
+            //         sectionList.innerHTML += `<div class="Teacher_card">
+            //                     <img src="../../images/classTeacherlogorm.png" alt="classTeacher"
+            //                         class="class_teacher_img">
+            //                     <span class="card_teachername">${teachername}</span>
+            //                     <span class="section_def_span">Section:<span class="section_name">${section}</span></span>
+            //                     <input type="hidden" name="sections[${section_count}][section]" value="${section}">
+            //                     <input type="hidden" name="sections[${section_count}][classTeacher]" value="${teachername}">
+            //                     <span class="cross" onclick="remove_section_Card(this)">X</span>
+            //                 </div>`
+            //         class_sections.style.display = "none"
+            //         section_count += 1
+            //     }
+
+            // }
+
+            // function showSection() {
+
+
+            //     let childs = sectionList.childElementCount
+            //     if (childs == 0) {
+            //         class_sections.style.display = "block"
+            //     }
+            //     else if (childs == 1) {
+            //         let section_name = document.querySelector('.section_name').innerText
+            //         class_sections.style.display = "block"
+            //         let options = class_section_options.children
+            //         for (let i = 0; i < options.length; i++) {
+            //             if (options[i].innerText == section_name) options[i].remove()
+            //         }
+
+            //     }
+            // }
+
+            // function done() {
+
+            //     let check = taskList.childElementCount
+            //     if (check > 0 && check <= 7) {
+            //         let sectioncount = sectionList.childElementCount
+            //         if (sectioncount == 2) {
+            //             form.submit()
+            //         }
+            //         else {
+            //             errordiv.innerHTML = "Class Must have their Sections"
+            //         }
+
+            //     }
+            //     else {
+            //         errordiv.innerHTML = "Class must have atleast 1 and atmost 7 subjects"
+            //     }
+
+            // }
+
+            // function show_Subject_Option() {
+            //     let value = element.value;
+            //     console.log(value)
+            //     if (value == "Chooose Class ....!") {
+            //         courses_section.style.visibility = "hidden"
+            //     }
+            //     else {
+            //         selectedClass = value
+            //         courses_section.style.visibility = "visible"
+
+            //     }
+            // }
+
+            // function addSubject() {
+            //     const taskInput1 = document.querySelectorAll(".listinputs")[0];
+            //     const taskInput2 = document.querySelectorAll(".listinputs")[1].value;
+            //     console.log(taskInput1, taskInput2)
+            //     returnSubject(taskInput1.value, taskInput2)
+            //     taskInput1.value = ""
+
+            // }
+
+            // function returnSubject(subjectname, subjectTeacher) {
+
+            //     console.log(subjectname, "   ", subjectTeacher)
+            //     if (subjectname.trim() !== "" && subjectTeacher.trim() !== ""
+            //         && subjectTeacher != "Chooose Subject Teacher") {
+
+            //         taskList.innerHTML += `<div class="list">
+            //                 <input class="values_input no-cursor" name="subjects[${subject_count}][subject]" readonly
+            //                  value="${subjectname}">
+            //                  <input class="values_input no-cursor" name="subjects[${subject_count}][subjectTeacher]" readonly
+            //                 value="${subjectTeacher}">
+
+            //                  <input class="values_input no-cursor" name="subjects[${subject_count}][CorrespondClass]" readonly
+            //                 value="${selectedClass}" style="display:none">
+            //                 <div class="span-btns">
+            //                         <span onclick="deleteTask(this)">❌</span>
+            //                 </div>
+            //             </div>`;
+            //         subject_count += 1
+            //     }
+            //     console.log("run hoya ")
+            // }
+
+
+            // function deleteTask(element) {
+            //     const taskItem = element.closest(".list");
+            //     taskItem.remove();
+            // }
+
+
+
+
+        </script>
+</body>
+
+</html>

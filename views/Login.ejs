@@ -8,78 +8,64 @@
     <link rel="stylesheet" href="/CSS/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <style>
-        .role{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .role>select {
-          
-            height: 100%;
-            width: 50%;
-            outline: none;
-            border: none;
-            font-size: 18px;
-            background: #dde1e7;
-            color: #595959;
-            border-radius: 25px;
-            box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #ffffff73;
-            padding-left: 10px;
-
-        }
-        .lbl{
-            text-align: start;
-            width: 50%;
-            font-size: 17px;
-            font-weight: bold;
-            color: #595959;;
-            margin-left: 5px;
-            
+        .error-label{
+            font-size: 12px;
+            color: rgb(255, 36, 36);
+            margin: 10px 0px;
+            text-align: left;
         }
     </style>
 </head>
 
 <body>
     <div class="content">
+        <%- include('includes/alerts') %>
         <div class="text">
             Login...!
         </div>
-        <form action="/student" method="post" class="loginForm">
-            <div class="role">
-                <span class="lbl">Role</span>
-                <select name="role" id="roleOptions">
-                    <option>Student</option>
-                    <option>Teacher</option>
-                    <option>admin</option>
-                </select>
-            </div>
+        <form action="/login" method="post" class="loginForm">
             <div class="field">
-                <input type="text" >
+                <input type="number" name="cnic" placeholder="Enter Cnic">
                 <span class="fas fa-user"></span>
-                <label>UserName</label>
+           
+                <label class="error-label"></label>
             </div>
             <div class="field">
-                <input type="password" >
+                <input type="password" name="password" placeholder="Enter Password">
                 <span class="fas fa-lock"></span>
-                <label>Password</label>
+                
+                <label class="error-label"></label>
             </div>
             <div class="forgot-pass">
                 <a href="#">Forgot Password?</a>
             </div>
-            <button>Sign in</button>
-            <div class="sign-up">
-                Not a member?
-                <a href="#">signup now</a>
-            </div>
+            <button type="button" class="login_button">Login</button>
+           
         </form>
     </div>
     <script>
-      document.querySelector('#roleOptions').addEventListener('change',setMethodUrl)
-      function setMethodUrl(e){
-          let form =document.querySelector('.loginForm')
-          let value=e.target.value.toLowerCase()
-          form.setAttribute('action',`/${value}`)
-      }
+
+    document.querySelector('.login_button').addEventListener('click',validateLogin)
+    
+    function validateLogin(){
+        let inputs=document.getElementsByTagName('input')
+        let errorlabel=document.querySelectorAll('.error-label')
+        let check=true
+        for (let i = 0; i < inputs.length; i++) {
+            console.log(inputs[i])
+            if(inputs[i].value==""){
+                errorlabel[i].innerHTML="Field Should not be Empty"
+                check=false;
+            }
+        }
+        if(check) document.querySelector('.loginForm').submit()
+    }
+    //   document.querySelector('#roleOptions').addEventListener('change',setMethodUrl)
+    //   function setMethodUrl(e){
+    //       let form =document.querySelector('.loginForm')
+    //       let value=e.target.value.toLowerCase()
+    //       form.setAttribute('action',`/${value}`)
+    //   }
     </script>
 </body>
 

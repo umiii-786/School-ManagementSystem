@@ -1,78 +1,236 @@
 <link rel="stylesheet" href="/CSS/includesCss/navbar.css">
+<style>
+    .notification {
+        width: 41px;
+        height: 41px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        cursor: pointer;
+        transition-duration: .3s;
+        background: var(----box-shadow-color);
+        box-shadow: var(--notificationShadow-color);
+        border: none;
+        margin-right: 10px;
+    }
+
+    .bell {
+        width: 18px;
+    }
+
+    .bell path {
+        fill: var(--text-color);
+    }
+
+    cation:hover {
+        background-color: rgb(56, 56, 56);
+    }
+
+    .notification:hover .bell {
+        animation: bellRing 0.9s both;
+    }
+
+    /* bell ringing animation keyframes*/
+    @keyframes bellRing {
+
+        0%,
+        100% {
+            transform-origin: top;
+        }
+
+        15% {
+            transform: rotateZ(10deg);
+        }
+
+        30% {
+            transform: rotateZ(-10deg);
+        }
+
+        45% {
+            transform: rotateZ(5deg);
+        }
+
+        60% {
+            transform: rotateZ(-5deg);
+        }
+
+        75% {
+            transform: rotateZ(2deg);
+        }
+    }
+
+    .notification:active {
+        transform: scale(0.8);
+    }
+
+    /* Container for Logout Button */
+    .logout-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px;
+    }
+
+    /* Logout Button */
+    .logout-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* background: #ecf0f3; */
+        border: none;
+        border-radius: 25px;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: var(--text-color);
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: var(--sidebutton-boxshadow);
+        transition: all 0.3s ease;
+        outline: none;
+        text-decoration: none;
+    }
+
+    /* Icon inside Logout Button */
+    .logout-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.2));
+        filter: brightness(0) invert(1);
+    }
+
+    /* Hover Effect */
+    .logout-button:hover {
+        background: #212121;
+        color: #ecf0f3;
+        box-shadow: inset -3px -3px 5px rgba(255, 255, 255, 0.1),
+            inset 3px 3px 5px rgba(0, 0, 0, 0.4);
+    }
+
+    .logout-button:hover .logout-icon {
+        filter: brightness(1) invert(0);
+    }
+
+    /* Active (Click) Effect */
+    .logout-button:active {
+        box-shadow: inset -3px -3px 5px rgba(255, 255, 255, 0.1),
+            inset 3px 3px 5px rgba(0, 0, 0, 0.3);
+        transform: scale(0.98);
+    }
+</style>
 <nav>
-    <div class="menu">
+
+
+    <div class="menu left">
         <div class="hamburgur_head">
 
             <!-- <label for="check" class="btn bars"><i class="fas fa-bars"></i></label> -->
             <!-- <img src="/images/logorm.png" alt="logo"> -->
             <div class="logo">
-                <a href="/">The Way-High School</a>
+                <a href="/">ClassSync</a>
             </div>
         </div>
 
 
     </div>
-    <!-- <form class="querryForm">
-        <input type="text" name="querry" id="input" placeholder="Search Student">
-        <button class="sm-btn btns">Search</button>
-    </form> -->
-    <div class="notification">
-        <span class="count">1</span>
-        <a href="/"><img src="/images/bell.png" alt="bell"></a>
-    </div>
-    <div class="name">
-        <a href="#"> <img src="/images/profilelogo.png" alt="profile" class="alllogos"></a>
-        <div class="names_title">
+
+
+    <div class="right">
+
+
+
+        <div class="name">
+            <a href="#"> <img src="/images/profilelogo.png" alt="profile" class="alllogos"></a>
             <span>Muhammad Umair</span>
-            <img src="/images/admin_name.png" class="alllogos">
+            <!-- <div class="names_title">
+                <img src="/images/admin_name.png" class="alllogos"> -->
+            <!-- </div>  -->
+
         </div>
 
-    </div>
-
-    <div class="background background--light">
-        <button class="logoutButton logoutButton--dark">
-            <svg class="doorway" viewBox="0 0 100 100">
+        <button class="notification">
+            <svg viewBox="0 0 448 512" class="bell">
                 <path
-                    d="M93.4 86.3H58.6c-1.9 0-3.4-1.5-3.4-3.4V17.1c0-1.9 1.5-3.4 3.4-3.4h34.8c1.9 0 3.4 1.5 3.4 3.4v65.8c0 1.9-1.5 3.4-3.4 3.4z" />
-                <path class="bang"
-                    d="M40.5 43.7L26.6 31.4l-2.5 6.7zM41.9 50.4l-19.5-4-1.4 6.3zM40 57.4l-17.7 3.9 3.9 5.7z" />
+                    d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z">
+                </path>
             </svg>
-            <svg class="figure" viewBox="0 0 100 100">
-                <circle cx="52.1" cy="32.4" r="6.4" />
-                <path
-                    d="M50.7 62.8c-1.2 2.5-3.6 5-7.2 4-3.2-.9-4.9-3.5-4-7.8.7-3.4 3.1-13.8 4.1-15.8 1.7-3.4 1.6-4.6 7-3.7 4.3.7 4.6 2.5 4.3 5.4-.4 3.7-2.8 15.1-4.2 17.9z" />
-                <g class="arm1">
-                    <path
-                        d="M55.5 56.5l-6-9.5c-1-1.5-.6-3.5.9-4.4 1.5-1 3.7-1.1 4.6.4l6.1 10c1 1.5.3 3.5-1.1 4.4-1.5.9-3.5.5-4.5-.9z" />
-                    <path class="wrist1"
-                        d="M69.4 59.9L58.1 58c-1.7-.3-2.9-1.9-2.6-3.7.3-1.7 1.9-2.9 3.7-2.6l11.4 1.9c1.7.3 2.9 1.9 2.6 3.7-.4 1.7-2 2.9-3.8 2.6z" />
-                </g>
-                <g class="arm2">
-                    <path
-                        d="M34.2 43.6L45 40.3c1.7-.6 3.5.3 4 2 .6 1.7-.3 4-2 4.5l-10.8 2.8c-1.7.6-3.5-.3-4-2-.6-1.6.3-3.4 2-4z" />
-                    <path class="wrist2"
-                        d="M27.1 56.2L32 45.7c.7-1.6 2.6-2.3 4.2-1.6 1.6.7 2.3 2.6 1.6 4.2L33 58.8c-.7 1.6-2.6 2.3-4.2 1.6-1.7-.7-2.4-2.6-1.7-4.2z" />
-                </g>
-                <g class="leg1">
-                    <path
-                        d="M52.1 73.2s-7-5.7-7.9-6.5c-.9-.9-1.2-3.5-.1-4.9 1.1-1.4 3.8-1.9 5.2-.9l7.9 7c1.4 1.1 1.7 3.5.7 4.9-1.1 1.4-4.4 1.5-5.8.4z" />
-                    <path class="calf1"
-                        d="M52.6 84.4l-1-12.8c-.1-1.9 1.5-3.6 3.5-3.7 2-.1 3.7 1.4 3.8 3.4l1 12.8c.1 1.9-1.5 3.6-3.5 3.7-2 0-3.7-1.5-3.8-3.4z" />
-                </g>
-                <g class="leg2">
-                    <path
-                        d="M37.8 72.7s1.3-10.2 1.6-11.4 2.4-2.8 4.1-2.6c1.7.2 3.6 2.3 3.4 4l-1.8 11.1c-.2 1.7-1.7 3.3-3.4 3.1-1.8-.2-4.1-2.4-3.9-4.2z" />
-                    <path class="calf2"
-                        d="M29.5 82.3l9.6-10.9c1.3-1.4 3.6-1.5 5.1-.1 1.5 1.4.4 4.9-.9 6.3l-8.5 9.6c-1.3 1.4-3.6 1.5-5.1.1-1.4-1.3-1.5-3.5-.2-5z" />
-                </g>
-            </svg>
-            <svg class="door" viewBox="0 0 100 100">
-                <path
-                    d="M93.4 86.3H58.6c-1.9 0-3.4-1.5-3.4-3.4V17.1c0-1.9 1.5-3.4 3.4-3.4h34.8c1.9 0 3.4 1.5 3.4 3.4v65.8c0 1.9-1.5 3.4-3.4 3.4z" />
-                <circle cx="66" cy="50" r="3.7" />
-            </svg>
-            <span class="button-text">Log Out</span>
         </button>
+
+
+
+        <div class="logout-container">
+            <a href="/logout" class="logout-button">
+                <img src="/images/logout.png" alt="Logout Icon" class="logout-icon">
+                Logout
+            </a>
+        </div>
+
+        <div class="theme-toggle">
+            <input type="checkbox" id="theme-switch" class="theme-switch" onclick="handleTheme()" />
+            <label for="theme-switch" class="toggle-label">
+                <div class="icon-container">
+                    <img src="/images/sun.png" alt="Light Mode" class="icon sun-icon">
+                    <img src="/images/moon.png" alt="Dark Mode" class="icon moon-icon">
+                </div>
+            </label>
+        </div>
+
+
+
+
     </div>
 </nav>
+<script>
+
+    function updateCookie(theme){
+        const date = new Date();
+        date.setTime(date.getTime() + (7 * 24 * 60 * 60 * 1000)); 
+        document.cookie = `theme=${theme};path=/;expires=${date.toUTCString()};`
+    }
+    function handleTheme() {
+        const themeSwitcher = document.getElementById('theme-switch')
+        themeSwitcher.checked
+        if (themeSwitcher.checked) {
+            document.body.classList.remove('light')
+            document.body.classList.add('dark')
+            updateCookie('dark')
+        }
+        else {
+            document.body.classList.remove('dark')
+            document.body.classList.add('light')
+            updateCookie('light')
+           
+        }
+    }
+
+    function getCookieValue(cookieName) {
+    const cookies = document.cookie.split("; ");
+    for (let cookie of cookies) {
+        const [name, value] = cookie.split("=");
+        if (name === cookieName) {
+            return value;
+        }
+    }
+    return null;
+}
+
+    document.onload = setTheme();
+    function setTheme() {
+        let themebutton=document.getElementById('theme-switch')
+        let theme = getCookieValue('theme')
+        console.log(theme,"in set theme  on new reload ")
+        if (theme == "dark") {
+            document.body.classList.remove('light')
+            document.body.classList.add('dark')
+            themebutton.checked=true
+        }
+        else {
+            document.body.classList.remove('dark')
+            document.body.classList.add('light')
+            themebutton.checked=false
+        }
+    }
+</script>
 <script src="/JS/navbar.js"></script>

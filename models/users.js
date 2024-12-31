@@ -1,12 +1,10 @@
 const mongoose=require("mongoose")
+const passportLocaLMongoose=require('passport-local-mongoose')
 const userSchema=mongoose.Schema({
-    username:{
-        type:String,
-        required:true
-    },
-    password:{
-        type:String,
-        required:true
+    cnic:{
+        type:Number,
+        required:true,
+        unique:true
     },
     Role:{
         type:String,
@@ -19,7 +17,11 @@ const userSchema=mongoose.Schema({
     }
 })
 
-module.exports.User=mongoose.model('User',userSchema)
+userSchema.plugin(passportLocaLMongoose,{ usernameField: 'cnic' })
+const User=mongoose.model('User',userSchema)
+module.exports={
+    User, 
+}
 
 
 

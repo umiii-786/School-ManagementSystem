@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
-   
-    
+
+
+
     <!-- <link rel="stylesheet" href="/CSS/includesCss/navbar.css"> -->
     <!-- <link rel="stylesheet" href="/CSS/includesCss/sidebar.css"> -->
     <style>
@@ -15,10 +15,6 @@
             width: 100%;
             display: flex;
             min-height: 100vh;
-        }
-
-        body {
-            background-color: #f0f4f8;
         }
 
         .main_section {
@@ -29,21 +25,32 @@
             align-items: center;
             padding-bottom: 20px;
         }
+
+        input[type="number"].no-spinners::-webkit-outer-spin-button,
+        input[type="number"].no-spinners::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"].no-spinners {
+            -moz-appearance: textfield;
+        }
     </style>
 </head>
 
 <body>
-   
+
     <div class="container">
 
         <%- include('includes/sidebar') %>
             <div class="main_section">
                 <%- include('includes/navbar') %>
-                <%- include('includes/alerts') %>
-                    <%- body -%>
+                    <%- include('includes/alerts') %>
+                        <%- body -%>
             </div>
 
     </div>
+
     <script src="https://kit.fontawesome.com/a4fa4ff0b8.js" crossorigin="anonymous"></script>
 </body>
 

@@ -7,26 +7,82 @@
     font-family: 'Poppins', sans-serif;
 }
 
+body {
+    --bg-color: #ecf0f3;
+    --box-shadow-color: -3px -3px 7px #ffffff, 3px 3px 5px #ceced1, inset -3px -3px 7px #ffffff, inset 3px 3px 5px #ceced1;
+    --text-color: black;
+    --button-shadow: gray;
+    --sidebutton-boxshadow: -3px -3px 7px #ffffff,
+        3px 3px 5px #ceced1;
+    --sidebuttonHover-shadow: inset -3px -3px 7px #ffffff,
+        inset 3px 3px 5px #ceced1;
+    --sidebutton-color: #31344b;
+    --notificationShadow-color: -3px -3px 7px #ffffff,
+        3px 3px 5px #ceced1;
+    --togleBoxShadow: inset -3px -3px 5px rgba(255, 255, 255, 0.8), inset 3px 3px 5px rgba(0, 0, 0, 0.1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+
+    --alertBoxShadow: 0px 0px 10px 0px #beb3b3;
+    ;
+    --forminputShadow: inset 2px 2px 5px #BABECC,
+        inset -5px -5px 10px #ffffff73;
+
+    --tableColor: #0098c1;
+    --tableBoxShadow:-3px -3px 7px #ffffff, 3px 3px 5px #5da3ef80, inset -3px -3px 7px #ffffff, inset 3px 3px 5px #5da3ef80;
+    --classSection-Shadow:0px 0px 7px 0px rgb(189, 192, 189);
+    --alertRemoveColor:brightness(1) invert(0);
+       
+
+    --profileIconShadow:-5px -5px 8px #7c7c7c7a, 5px 5px 8px #3131317a;
+}
+
+body.dark {
+    --sidebutton-boxshadow: -3px -3px 7px #000000, 3px 3px 5px #323237;
+    --bg-color: #212121;
+    --box-shadow-color: -3px -3px 7px #000000, 3px 3px 5px #323237, inset -3px -3px 7px #000000, inset 3px 3px 5px #323237;
+    --text-color: white;
+    --sidebuttonHover-shadow: inset -3px -3px 7px black,
+    inset 3px 3px 5px #323237;
+    --sidebutton-color: rgba(233, 229, 229, 0.89);
+    --notificationShadow-color: -3px -3px 5px rgba(255, 255, 255, 0.8),
+    3px 3px 5px rgba(0, 0, 0, 0.1);
+    --togleBoxShadow: inset -3px -3px 5px rgba(33, 33, 33, 0.8),
+    inset 3px 3px 5px rgba(0, 0, 0, 0.3),
+        3px 3px 5px rgba(0, 0, 0, 0.5);
+        --alertBoxShadow: 0px 0px 10px 0px rgba(190, 179, 179, 0.2);
+        --forminputShadow: inset 2px 2px 3px #4f4f4f, inset -5px -5px 10px #50454573;
+        
+        --tableColor: rgb(255 140 140);
+        --tableBoxShadow:-3px -3px 7px #ffffff, 3px 3px 5px #ff8c8c, inset -3px -3px 7px #ffffff, inset 3px 3px 5px #ff8c8c;
+        --classSection-Shadow:0px 0px 7px 0px rgb(11 11 30);
+
+        --alertRemoveColor:brightness(0) invert(1);
+        --profileIconShadow:-5px -5px 8px #ffffff7a,
+                5px 5px 8px #a9a9aa7a;
+}
+
+nav {
 
 
-nav{
-    background: #ecf0f3;
-    box-shadow: -3px -3px 7px #ffffff, 3px 3px 5px #ceced1, inset -3px -3px 7px #ffffff, inset 3px 3px 5px #ceced1;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
     height: 80px;
     margin-bottom: 20px;
+    box-shadow: 0px 0px 10px 0px gray;
 }
 
-nav,.sidebar {
-    background: #ecf0f3;
-    box-shadow: -3px -3px 7px #ffffff,
-        3px 3px 5px #ceced1,
-        inset -3px -3px 7px #ffffff,
-        inset 3px 3px 5px #ceced1;
-      
+
+.sidebar {
+    background: var(--bg-color);
+    box-shadow: var(--box-shadow-color);
+}
+
+
+.right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -34,10 +90,10 @@ nav,.sidebar {
     font-size: 28px;
     font-weight: 600;
     text-decoration: none;
-    color: #31344b;
+    color: var(--sidebutton-color);
 }
 
-.bars{
+.bars {
     display: block;
 }
 
@@ -56,10 +112,23 @@ nav,.sidebar {
     position: relative;
 }
 
-
+.left {
+    margin-left: 30px;
+}
 
 .name {
     display: flex;
+    margin-right: 30px;
+}
+
+.name>span {
+    text-align: center;
+    text-wrap: auto;
+    width: 101px;
+    line-height: 20.5px;
+    padding: 3px;
+    color: var(--sidebutton-color);
+    font-family: sans-serif;
 }
 
 .alllogos {
@@ -79,279 +148,82 @@ nav,.sidebar {
     height: 20px;
 }
 
-.notification {
-    position: relative;
+
+
+
+
+
+
+/* toogllee button CSS */
+
+.theme-toggle {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-
-}
-
-.notification>a>img {
-    width: 30px;
-    height: 30px;
-    filter: drop-shadow(5px 5px 10px rgba(255, 121, 121, 0.5));
-
-}
-
-.notification .count {
-    position: absolute;
-    top: -12px;
-    right: 5px;
-
-    text-shadow: 2px 1px 2px rgb(0 0 0);
-    color: red;
-}
-
-.querryForm input {
-    padding: 10px 5px;
-    border-radius: 8px;
-    border: 1px solid black;
+    align-items: center;
+    margin-right: 10px;
 }
 
 
-.sm-btn {
-    padding: 10px 5px;
-    border-radius: 8px;
-    font-size: 15px;
-
+.theme-switch {
+    display: none;
 }
 
-
-.logoutButton {
-    --figure-duration: 100ms;
-    --transform-figure: none;
-    --walking-duration: 100ms;
-    --transform-arm1: none;
-    --transform-wrist1: none;
-    --transform-arm2: none;
-    --transform-wrist2: none;
-    --transform-leg1: none;
-    --transform-calf1: none;
-    --transform-leg2: none;
-    --transform-calf2: none;
-    background: none;
-    border: 0;
-    color: #f4f7ff;
+.toggle-label {
+    position: relative;
+    width: 60px;
+    height: 38px;
+    /* background: #ecf0f3; */
+    background: var(--bg-color);
+    border-radius: 30px;
+    box-shadow: var(--togleBoxShadow);
     cursor: pointer;
-    display: block;
-    font-family: "Quicksand", sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    height: 40px;
-    outline: none;
-    padding: 0 0 0 20px;
-    perspective: 100px;
-    position: relative;
-    text-align: left;
-    width: 130px;
-    -webkit-tap-highlight-color: transparent;
+    transition: background 0.3s ease;
 }
 
-.logoutButton::before {
-    background-color: #1f2335;
-    border-radius: 5px;
-    content: "";
-    display: block;
-    height: 100%;
-    left: 0;
+
+.icon-container {
     position: absolute;
-    top: 0;
-    transform: none;
-    transition: transform 50ms ease;
     width: 100%;
-    z-index: 2;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
 }
 
-.logoutButton:hover .door {
-    transform: rotateY(20deg);
+.icon {
+    width: 20px;
+    height: 20px;
+    transition: opacity 0.3s ease;
 }
 
-.logoutButton:active::before {
-    transform: scale(0.96);
-}
-
-.logoutButton:active .door {
-    transform: rotateY(28deg);
-}
-
-.logoutButton.clicked::before {
-    transform: none;
-}
-
-.logoutButton.clicked .door {
-    transform: rotateY(35deg);
-}
-
-.logoutButton.door-slammed .door {
-    transform: none;
-    transition: transform 100ms ease-in 250ms;
-}
-
-.logoutButton.falling {
-    animation: shake 200ms linear;
-}
-
-.logoutButton.falling .bang {
-    animation: flash 300ms linear;
-}
-
-.logoutButton.falling .figure {
-    animation: spin 1000ms infinite linear;
-    bottom: -1080px;
-    opacity: 0;
-    right: 1px;
-    transition: transform calc(var(--figure-duration) * 1ms) linear, bottom calc(var(--figure-duration) * 1ms) cubic-bezier(0.7, 0.1, 1, 1) 100ms, opacity calc(var(--figure-duration) * 0.25ms) linear calc(var(--figure-duration) * 0.75ms);
-    z-index: 1;
-}
-
-.logoutButton--light::before {
-    background-color: #f4f7ff;
-}
-
-.logoutButton--light .button-text {
-    color: #1f2335;
-}
-
-.logoutButton--light .door,
-.logoutButton--light .doorway {
-    fill: #1f2335;
-}
-
-.button-text {
-    color: #f4f7ff;
-    font-weight: 500;
-    position: relative;
-    z-index: 10;
-}
-
-svg {
-    display: block;
+.toggle-label::after {
+    content: "";
     position: absolute;
+    width: 29px;
+    height: 29px;
+    background: var(--bg-color);
+    border-radius: 50%;
+    box-shadow: -3px -3px 5px rgba(255, 255, 255, 0.8), 3px 3px 5px rgba(0, 0, 0, 0.1);
+    top: 2px;
+    left: 2px;
+    transition: all 0.3s ease;
 }
 
-.figure {
-    bottom: 5px;
-    fill: #4371f7;
-    right: 18px;
-    transform: var(--transform-figure);
-    transition: transform calc(var(--figure-duration) * 1ms) cubic-bezier(0.2, 0.1, 0.8, 0.9);
-    width: 30px;
-    z-index: 4;
+
+.theme-switch:checked+.toggle-label {
+    background: #212121;
 }
 
-.door,
-.doorway {
-    bottom: 4px;
-    fill: #f4f7ff;
-    right: 12px;
-    width: 32px;
+.theme-switch:checked+.toggle-label::after {
+    left: 32px;
+    background: #212121;
 }
 
-.door {
-    transform: rotateY(20deg);
-    transform-origin: 100% 50%;
-    transform-style: preserve-3d;
-    transition: transform 200ms ease;
-    z-index: 5;
+body {
+    background: var(--bg-color);
 }
 
-.door path {
-    fill: #4371f7;
-    stroke: #4371f7;
-    stroke-width: 4;
-}
-
-.doorway {
-    z-index: 3;
-}
-
-.bang {
-    opacity: 0;
-}
-
-.arm1,
-.wrist1,
-.arm2,
-.wrist2,
-.leg1,
-.calf1,
-.leg2,
-.calf2 {
-    transition: transform calc(var(--walking-duration) * 1ms) ease-in-out;
-}
-
-.arm1 {
-    transform: var(--transform-arm1);
-    transform-origin: 52% 45%;
-}
-
-.wrist1 {
-    transform: var(--transform-wrist1);
-    transform-origin: 59% 55%;
-}
-
-.arm2 {
-    transform: var(--transform-arm2);
-    transform-origin: 47% 43%;
-}
-
-.wrist2 {
-    transform: var(--transform-wrist2);
-    transform-origin: 35% 47%;
-}
-
-.leg1 {
-    transform: var(--transform-leg1);
-    transform-origin: 47% 64.5%;
-}
-
-.calf1 {
-    transform: var(--transform-calf1);
-    transform-origin: 55.5% 71.5%;
-}
-
-.leg2 {
-    transform: var(--transform-leg2);
-    transform-origin: 43% 63%;
-}
-
-.calf2 {
-    transform: var(--transform-calf2);
-    transform-origin: 41.5% 73%;
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg) scale(0.94);
-    }
-
-    to {
-        transform: rotate(359deg) scale(0.94);
-    }
-}
-
-@keyframes shake {
-    0% {
-        transform: rotate(-1deg);
-    }
-
-    50% {
-        transform: rotate(2deg);
-    }
-
-    100% {
-        transform: rotate(-1deg);
-    }
-}
-
-@keyframes flash {
-    0% {
-        opacity: 0.4;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
+/* .theme{
+    background: var(--bg-color);
+} */
