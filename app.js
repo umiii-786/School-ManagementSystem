@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const { Student} = require('./models/student')
 const { Teacher, } = require('./models/Teacher')
@@ -43,7 +44,7 @@ passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 passport.use(new passportLocal({ usernameField: 'cnic' }, User.authenticate()))
 
-const db_url=process.env.MONGO_URL || 'mongodb://127.0.0.1:27017/School'
+const db_url=process.env.MONGO_URL
 Connect_To_DB(db_url).then(()=> console.log('connected to db'))
 
 app.use(PopulateLoginUser)
