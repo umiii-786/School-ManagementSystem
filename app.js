@@ -1,10 +1,10 @@
 require('dotenv').config()
 const express = require('express')
-const { Student} = require('./models/student')
+const { Student } = require('./models/student')
 const { Teacher, } = require('./models/Teacher')
 const { User } = require('./models/users')
 const { Department } = require('./models/DeptModel')
-const {Connect_To_DB}=require('./connection')
+const mongoose=require('mongoose')
 const path = require('path')
 const app = express()
 const flash = require('connect-flash')
@@ -14,14 +14,14 @@ const passport = require('passport')
 const passportLocal = require('passport-local')
 const cookieParser = require('cookie-parser')
 const engine = require('ejs-mate');
-const userRoutes=require('./routes/userRoutes')
+const userRoutes = require('./routes/userRoutes')
 console.log('every thing is right ')
-const teacherRoutes=require('./routes/teacherRoutes')
-const departmentRoutes=require('./routes/departmentRoutes')
-const attendenceRoutes=require('./routes/attendenceRoutes')
+const teacherRoutes = require('./routes/teacherRoutes')
+const departmentRoutes = require('./routes/departmentRoutes')
+const attendenceRoutes = require('./routes/attendenceRoutes')
 
-const {IsLogin,PopulateLoginUser,setFlashMessages,ErrorHandled_Middleware}=require('./middlewares')
-const {UserValidate}=require('./middlewares/validationMiddlewares')
+const { IsLogin, PopulateLoginUser, setFlashMessages, ErrorHandled_Middleware } = require('./middlewares')
+const { UserValidate } = require('./middlewares/validationMiddlewares')
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, '/views'))
@@ -44,14 +44,19 @@ passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 passport.use(new passportLocal({ usernameField: 'cnic' }, User.authenticate()))
 
-const db_url=process.env.MONGO_URL
-Connect_To_DB(db_url).then(()=> console.log('connected to db'))
+
+
+
+const db_url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.ka3ytu0.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority&appName=Cluster0`
+console.log(db_url)
+console.log(typeof(db_url))
+mongoose.connect(db_url).then(() => console.log('connected to db'))
 
 app.use(PopulateLoginUser)
 app.use(flash())
 app.use(setFlashMessages)
 
-const PORT=process.env.PORT || 8000
+const PORT = process.env.PORT
 
 app.get('/', IsLogin, async (req, res) => {
     const students = await Student.find({})
@@ -110,10 +115,10 @@ app.get("/logout", (req, res) => {
     })
 })
 
-app.use('/student',userRoutes)
-app.use('/teacher',teacherRoutes)
-app.use('/department',departmentRoutes)
-app.use('/attendence',attendenceRoutes)
+app.use('/student', userRoutes)
+app.use('/teacher', teacherRoutes)
+app.use('/department', departmentRoutes)
+app.use('/attendence', attendenceRoutes)
 
 app.get('*', (req, res,) => {
     throw new MyError(404, "Page Not Found")

@@ -1,10 +1,8 @@
 
-// const { required } = require('joi');
 const mongoose = require('mongoose')
 const { User } = require('./users')
 const { Lecture } = require('./LectureModel')
 const { Department } = require('./DeptModel')
-mongoose.connect('mongodb://127.0.0.1:27017/School')
 const Teacher_Schema = new mongoose.Schema({
     identity: {
         type: mongoose.Schema.ObjectId,
