@@ -25,7 +25,7 @@ const { UserValidate } = require('./middlewares/validationMiddlewares')
 
 app.engine('ejs', engine); // Use ejs-mate
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', 'views');
 app.use(express.static('public'))
 app.use(express.urlencoded({ extends: false }))
 app.use(express.json())
