@@ -23,9 +23,9 @@ const attendenceRoutes = require('./routes/attendenceRoutes')
 const { IsLogin, PopulateLoginUser, setFlashMessages, ErrorHandled_Middleware } = require('./middlewares')
 const { UserValidate } = require('./middlewares/validationMiddlewares')
 
-app.set('view engine', 'ejs')
-app.set('views', path.join(__dirname, '/views'))
-app.engine('ejs', engine)
+app.engine('ejs', engine); // Use ejs-mate
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'))
 app.use(express.urlencoded({ extends: false }))
 app.use(express.json())
