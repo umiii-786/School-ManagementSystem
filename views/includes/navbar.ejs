@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/CSS/includesCss/navbar.css">
 <style>
-    .notification {
+    /* .notification {
         width: 41px;
         height: 41px;
         position: relative;
@@ -14,123 +14,66 @@
         box-shadow: var(--notificationShadow-color);
         border: none;
         margin-right: 10px;
+    }*/
+</style>
+<style>
+    .line {
+        width: 50px;
+        height: 8px;
+        margin: 5px 0px;
+        border-radius: 0%;
+        background-color: var(--sidebutton-color);
     }
 
-    .bell {
-        width: 18px;
+    .point {
+        width: 10px;
+        margin: 5px 0px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: var(--sidebutton-color);
     }
 
-    .bell path {
-        fill: var(--text-color);
-    }
-
-    cation:hover {
-        background-color: rgb(56, 56, 56);
-    }
-
-    .notification:hover .bell {
-        animation: bellRing 0.9s both;
-    }
-
-    /* bell ringing animation keyframes*/
-    @keyframes bellRing {
-
-        0%,
-        100% {
-            transform-origin: top;
-        }
-
-        15% {
-            transform: rotateZ(10deg);
-        }
-
-        30% {
-            transform: rotateZ(-10deg);
-        }
-
-        45% {
-            transform: rotateZ(5deg);
-        }
-
-        60% {
-            transform: rotateZ(-5deg);
-        }
-
-        75% {
-            transform: rotateZ(2deg);
-        }
-    }
-
-    .notification:active {
-        transform: scale(0.8);
-    }
-
-    /* Container for Logout Button */
-    .logout-container {
-        display: flex;
-        justify-content: center;
+    .burgurs {
+        display: none;
         align-items: center;
-        margin: 20px;
+
     }
 
-    /* Logout Button */
-    .logout-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        /* background: #ecf0f3; */
-        border: none;
-        border-radius: 25px;
-        padding: 10px 20px;
-        font-size: 16px;
-        color: var(--text-color);
-        font-weight: bold;
+    .inner_burgur {
+        margin: 0px 10px;
         cursor: pointer;
-        box-shadow: var(--sidebutton-boxshadow);
-        transition: all 0.3s ease;
-        outline: none;
-        text-decoration: none;
     }
 
-    /* Icon inside Logout Button */
-    .logout-icon {
-        width: 20px;
-        height: 20px;
-        margin-right: 10px;
-        filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.2));
-        filter: brightness(0) invert(1);
-    }
+    @media screen and (max-width:800px) {
+        .right {
+            display: none;
+            position: absolute;
+            flex-direction: column;
+            right: 10px;
+            top: 90px;
+            box-shadow: var(--forminputShadow);
+            background-color: var(--tableRowsColor);
+            z-index: 10;
+        }
 
-    /* Hover Effect */
-    .logout-button:hover {
-        background: #212121;
-        color: #ecf0f3;
-        box-shadow: inset -3px -3px 5px rgba(255, 255, 255, 0.1),
-            inset 3px 3px 5px rgba(0, 0, 0, 0.4);
-    }
-
-    .logout-button:hover .logout-icon {
-        filter: brightness(1) invert(0);
-    }
-
-    /* Active (Click) Effect */
-    .logout-button:active {
-        box-shadow: inset -3px -3px 5px rgba(255, 255, 255, 0.1),
-            inset 3px 3px 5px rgba(0, 0, 0, 0.3);
-        transform: scale(0.98);
+        .burgurs {
+            display: flex;
+        }
     }
 </style>
+
 <nav>
 
 
     <div class="menu left">
         <div class="hamburgur_head">
-
-            <!-- <label for="check" class="btn bars"><i class="fas fa-bars"></i></label> -->
-            <!-- <img src="/images/logorm.png" alt="logo"> -->
-            <div class="logo">
-                <a href="/">ClassSync</a>
+            <div class="botimg">
+                <a href="/Questgpt"> <img src="/images/QuestBotrm2.png" alt="" srcset=""></a>
             </div>
+            <div class="logo">
+                <a href="/">Quest</a>
+            </div>
+
         </div>
 
 
@@ -140,97 +83,86 @@
     <div class="right">
 
 
+        <% if (itself) { %>
 
-        <div class="name">
-            <a href="#"> <img src="/images/profilelogo.png" alt="profile" class="alllogos"></a>
-            <span>Muhammad Umair</span>
-            <!-- <div class="names_title">
-                <img src="/images/admin_name.png" class="alllogos"> -->
-            <!-- </div>  -->
-
-        </div>
-
-        <button class="notification">
-            <svg viewBox="0 0 448 512" class="bell">
-                <path
-                    d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z">
-                </path>
-            </svg>
-        </button>
-
-
-
-        <div class="logout-container">
-            <a href="/logout" class="logout-button">
-                <img src="/images/logout.png" alt="Logout Icon" class="logout-icon">
-                Logout
-            </a>
-        </div>
-
-        <div class="theme-toggle">
-            <input type="checkbox" id="theme-switch" class="theme-switch" onclick="handleTheme()" />
-            <label for="theme-switch" class="toggle-label">
-                <div class="icon-container">
-                    <img src="/images/sun.png" alt="Light Mode" class="icon sun-icon">
-                    <img src="/images/moon.png" alt="Dark Mode" class="icon moon-icon">
+            <% if (itself.Role=='Admin' ) { %>
+                <div class="name">
+                    <img src="/images/profilelogo.png" alt="profile" class="alllogos">
+                    <span>
+                        Admin
+                        <br>
+                        ""<%= itself.Role %>""
+                    </span>
                 </div>
-            </label>
-        </div>
+
+                <% } else { %>
+                    <div class="name">
+                        <a href="/student/<%= itself.information._id  %>"> <img
+                                src="<%=  itself.information.profileImg %>" alt="profile" class="alllogos"></a>
+                        <span>
+                            <%= itself.information.username %>
+                                <br>
+                                ""<%= itself.Role %>""
+                        </span>
+
+
+                    </div>
+                    <% } %>
+
+
+
+                        <% } %>
+
+
+                            <div class="logout-container">
+                                <a href="/logout" class="logout-button">
+                                    <img src="/images/logout.png" alt="Logout Icon" class="logout-icon">
+                                    Logout
+                                </a>
+                            </div>
+
+                            <div class="theme-toggle">
+                                <input type="checkbox" id="theme-switch" class="theme-switch" onclick="handleTheme()" />
+                                <label for="theme-switch" class="toggle-label">
+                                    <div class="icon-container">
+                                        <img src="/images/sun.png" alt="Light Mode" class="icon sun-icon">
+                                        <img src="/images/moon.png" alt="Dark Mode" class="icon moon-icon">
+                                    </div>
+                                </label>
+                            </div>
 
 
 
 
     </div>
+    <div class="burgurs">
+
+
+        <div class="sidebarBurgur inner_burgur">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <div class="logoutBurgur inner_burgur">
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+        </div>
+
+    </div>
 </nav>
 <script>
-
-    function updateCookie(theme){
-        const date = new Date();
-        date.setTime(date.getTime() + (7 * 24 * 60 * 60 * 1000)); 
-        document.cookie = `theme=${theme};path=/;expires=${date.toUTCString()};`
-    }
-    function handleTheme() {
-        const themeSwitcher = document.getElementById('theme-switch')
-        themeSwitcher.checked
-        if (themeSwitcher.checked) {
-            document.body.classList.remove('light')
-            document.body.classList.add('dark')
-            updateCookie('dark')
+    document.querySelector('.logoutBurgur').addEventListener('click', (event) => {
+        const rightElement = document.querySelector('.right')
+        let element_style = window.getComputedStyle(rightElement)
+        if (element_style.display == 'none') {
+            rightElement.style.display = 'flex'
         }
         else {
-            document.body.classList.remove('dark')
-            document.body.classList.add('light')
-            updateCookie('light')
-           
+            rightElement.style.display = 'none'
         }
-    }
-
-    function getCookieValue(cookieName) {
-    const cookies = document.cookie.split("; ");
-    for (let cookie of cookies) {
-        const [name, value] = cookie.split("=");
-        if (name === cookieName) {
-            return value;
-        }
-    }
-    return null;
-}
-
-    document.onload = setTheme();
-    function setTheme() {
-        let themebutton=document.getElementById('theme-switch')
-        let theme = getCookieValue('theme')
-        console.log(theme,"in set theme  on new reload ")
-        if (theme == "dark") {
-            document.body.classList.remove('light')
-            document.body.classList.add('dark')
-            themebutton.checked=true
-        }
-        else {
-            document.body.classList.remove('dark')
-            document.body.classList.add('light')
-            themebutton.checked=false
-        }
-    }
+    })
+    
 </script>
 <script src="/JS/navbar.js"></script>
+<script src="/JS/theme.js"></script>

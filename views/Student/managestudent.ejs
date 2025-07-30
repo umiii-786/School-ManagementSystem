@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../CSS/searchform.css">
+    <link rel="stylesheet" href="/CSS/searchform.css">
     <style>
         .image {
             width: 80%;
@@ -56,35 +56,21 @@
             margin-right: 5px;
         }
     </style>
-     <link rel="stylesheet" href="/CSS/table.css">
+    <link rel="stylesheet" href="/CSS/table.css">
     <style>
-
-
-
-
         .button {
             display: inline-block;
-    font-size: 14px;
-    text-decoration: none;
-    border-radius: 5px;
-    color: #fff;
-    width: 100px;
-    font-weight: 600;
-    padding: 6px;
-    width: 104px;
-    text-align: center;
-    cursor: pointer;
-}
-        
-
-
-
-
-
-
-
-
-       
+            font-size: 14px;
+            text-decoration: none;
+            border-radius: 5px;
+            color: #fff;
+            width: 100px;
+            font-weight: 600;
+            padding: 6px;
+            width: 104px;
+            text-align: center;
+            cursor: pointer;
+        }
 
         section {
             width: 90%;
@@ -93,7 +79,7 @@
 
         .filter_data_section {
             width: 100%;
-            box-shadow:var(--tableBoxShadow)
+            box-shadow: var(--tableBoxShadow)
         }
 
 
@@ -122,39 +108,40 @@
             color: var(--sidebutton-color);
         }
     </style>
+
+    <style>
+      /*  @media screen and (max-width:1050px) {
+           
+        }*/
+    </style>
 </head>
 
 <body>
     <% layout('boilerplate') -%>
-        <h4 class="manage_heading">Student Data Filters</h4>
+        <h4 class="manage_heading">Search Student Easily</h4>
         <form action="/student/manage" class="options">
-            <input type="number" name="Rollno" placeholder="search by Rollno" class="search_inputs">
-            <select name="class" id="selectboxes_Options" class="search_inputs">
+            <input type="number" name="rollno" placeholder="search by Rollno" class="search_inputs">
+            <select name="department" id="selectboxes_Options" class="search_inputs">
                 <option>All</option>
-                <option>One</option>
-                <option>Two</option>
-                <option>Three</option>
-                <option>Four</option>
-                <option>Five</option>
-                <option>Six</option>
-                <option>Seven</option>
-                <option>Eight</option>
-                <option>Nine</option>
-                <option>Matrix</option>
-                <option>Intermediate-I</option>
-                <option>Intermediate-II</option>
+                <% for( let i=0; i < departmentNames.length; i++ ) { %>
+                    <option>
+                        <%= departmentNames[i].department_name %>
+                    </option>
+                    <% } %>
+
             </select>
-            <select name="section" class="search_inputs">
-                <option>All</option>
-                <option>A</option>
-                <option>B</option>
+            <select name="batch" class="search_inputs">
+                <option>2022</option>
+                <option>2023</option>
+                <option>2024</option>
+                <option>2025</option>
             </select>
             <button class="search-btn">Search</button>
         </form>
 
         <% if (data.length==0) { %>
             <div class="image">
-                <img src="../../images/filterimagerm.png" alt="filter">
+                <img src="/images/filterimagerm.png" alt="filter">
             </div>
 
             <% } else {%>
@@ -166,11 +153,13 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Roll-no</th>
-                                    <th>Class</th>
-                                    <th>Section</th>
+                                    <th>Department</th>
+                                    <th>Batch</th>
                                     <th></th>
-                                    <th></th>
-                                    <th></th>
+                                    <% if (itself.Role=='Admin' ) { %>
+                                        <th></th>
+                                        <th></th>
+                                        <% } %>
                                 </tr>
                             </thead>
 
@@ -185,35 +174,41 @@
                                         </td>
                                         <td data-title='E-mail'>
                                             <i class="fa-regular fa-id-badge"></i></i>
-                                            <%= data[i].Rollno %>
+                                            <%= data[i].rollno %>
                                         </td>
                                         <td data-title='E-mail'>
                                             <i class="fa-solid fa-landmark"></i>
-                                            <%= data[i].class.className %>
+                                            <%= data[i].department.department_name %>
                                         </td>
                                         <td data-title='E-mail'>
                                             <!-- <i class="fa-solid fa-section"></i> -->
-                                            <%= data[i].section %>
+                                            <%= data[i].batch %>
                                         </td>
+
                                         <td class='select'>
                                             <a class='button profile_button' href='/student/<%=data[i]._id  %>'>
                                                 View Profile
                                             </a>
                                         </td>
-                                        <td class='select'>
+                                        <% if (itself.Role=='Admin' ) { %>
 
 
-                                            <a class='button edit' href='/student/edit/<%= data[i]._id %>'>
-                                                Edit
-                                            </a>
-                                        </td>
-                                        <td class='select'>
-                                            <form action="/student/<%= data[i]._id %>?_method=DELETE" method="post">
-                                                <button class='button delete' style="border:none ;">
-                                                    Delete
-                                                </button>
-                                            </form>
-                                        </td>
+
+                                            <td class='select'>
+
+
+                                                <a class='button edit' href='/student/edit/<%= data[i]._id %>'>
+                                                    Edit
+                                                </a>
+                                            </td>
+                                            <td class='select'>
+                                                <form action="/student/<%= data[i]._id %>?_method=DELETE" method="post">
+                                                    <button class='button delete' style="border:none ;">
+                                                        Delete
+                                                    </button>
+                                                </form>
+                                            </td>
+                                            <% } %>
                                     </tr>
 
                                     <% } %>

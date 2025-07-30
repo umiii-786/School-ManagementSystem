@@ -2,14 +2,25 @@ const mongoose = require("mongoose")
 
 
 const LectureSchema = mongoose.Schema({
-    CorrespondClass: {
+    course: {
         type: String,
+        required:true
     },
-    subject: {
-        type: String
+    semester_no: {
+        type: Number,
+        required:true
     },
-    subjectTeacher: {
-        type: String
+    batch: {
+        type: Number,
+        required:true
+    },
+    department:{
+        type:mongoose.Schema.ObjectId,
+        ref:'Department'
+    },
+    last_attendence_data:{
+        type:String,
+        default:'not_conducted'
     }
 })
 

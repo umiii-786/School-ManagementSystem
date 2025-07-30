@@ -1,0 +1,112 @@
+  .card {
+            width: 250px;
+            height: 254px;
+            border-radius: 30px;
+            background: var(--bg-color);
+            box-shadow: var(--box-shadow-color);
+            padding: 0px 20px;
+            /* box-shadow: 15px 15px 30px rgb(25, 25, 25), -15px -15px 30px rgb(60, 60, 60); */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .main {
+            width: 90%;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .lectures {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* box-shadow: 15px 15px 30px rgb(25, 25, 25),
+                -15px -15px 30px rgb(60, 60, 60); */
+
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: var(--bg-color);
+
+        }
+
+        .subjectname {
+            /* display: flex; */
+            /* align-items: cen/ter; */
+            justify-content: center;
+        }
+
+        .subjectname h2 {
+            font-size: 20px;
+            color: var(--tableColor);
+        }
+
+        .subjectname h3 {
+            color: var(--sidebutton-color);
+            font-size: 17px;
+        }
+
+        .section h4 {
+            color: var(--sidebutton-color);
+        }
+
+        .className {
+            color: var(--sidebutton-color);
+            margin: 8px 0px;
+        }
+
+        .className strong {
+            color: var(--tableColor);
+        }
+
+        .attendance_btn {
+            background-color: var(--tableColor);
+            color: var(--text-color);
+            padding: 4px;
+            text-decoration: none;
+            font-size: 15px;
+            text-align: center;
+            display: inline-block;
+            width: 150px;
+            margin: 10px 0px;
+            padding: 7px 0px;
+            border-radius: 6px;
+
+
+        }
+
+        .heading {
+            color: var(--text-color);
+            font-family: cursive;
+            font-style: italic;
+            margin: 30px 0px;
+        }
+
+
+
+        .previous_taken_date {
+            position: absolute;
+            top: 20px;
+            right: 15px;
+            transform: rotatez(-20deg);
+            display: flex;
+            align-items: center;
+        }
+
+        .checklogo {
+            width: 25px;
+            height: 25px;
+        }
+
+        .previous_taken_date span {
+            color: red;
+            font-weight: 700;
+        }

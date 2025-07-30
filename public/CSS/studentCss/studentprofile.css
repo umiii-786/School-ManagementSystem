@@ -22,20 +22,10 @@ body {
                    -5px -5px 30px rgb(57, 57, 57); */
 }
 
-/* Profile Section */
-/* .profile-section {
-    background: linear-gradient(to right, #ee5a6f, #f29263);
-    color: #fff;
-    padding: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 250px;
-} */
 .profile-details{
     text-align: center;
     position: relative;
+    color: var(--tableColor);
 }
 
 .profile-img {
@@ -75,6 +65,7 @@ body {
     flex: 2;
     padding: 1.5rem;
     background: var(--bg-color);
+    color:var(--text-color) ;
 }
 
 .info h6,
@@ -104,36 +95,92 @@ body {
 .info-row p {
     font-size: 14px;
     margin: 0;
-    color: #333;
+  color: var(--sidebutton-color);
     font-weight: bold;
 }
 
 .info-row h6 {
     font-size: 14px;
     margin: 0.5rem 0 0;
-    color: #777;
+     color:var(--tableColor);
 }
 
-/* Social Links */
-.social-links {
-    list-style: none;
-    display: flex;
-    padding: 0;
-    margin: 2rem 0 0;
-    justify-content: flex-start;
-}
 
-.social-links li {
-    margin-right: 1rem;
-}
+   .profileImg_Form {
+            display: none;
+        }
 
-.social-links a {
-    text-decoration: none;
-    font-size: 14px;
-    color: #777;
-    transition: color 0.3s;
-}
+        .profile-section {
+            width: 250px;
+            padding: 10px;
+            background: var(--bg-color);
+            box-shadow: var(--forminputShadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-.social-links a:hover {
-    color: #333;
-}
+        .profileimage {
+            background-color: transparent;
+            border: none;
+            margin-top: 20px;
+            border-radius: 5em;
+            width: 100px;
+            height: 100px;
+        }
+
+        .pfp {
+            border-radius: 35em;
+            fill: white;
+        }
+
+        .Name {
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+            font-size: 20px;
+            margin-top: 10px;
+            color: var(--text-color);
+        }
+
+
+        .card a {
+            transition: 0.4s;
+            color: white
+        }
+
+
+
+
+ section {
+            width: 80%;
+            margin: 30px auto;
+        }
+
+        .filter_data_section {
+            width: 100%;
+            box-shadow: var(--tableBoxShadow)
+        }
+
+        .h1 {
+            color: var(--text-color);
+            margin: 10px 0px;
+        }
+
+        table {
+            font-size: 18px;
+        }
+
+        td {
+            font-weight: normal;
+        }
+
+        @media screen and (max-width:600px) {
+            .card{
+                flex-direction: column;
+            }
+            .profile-section{
+                width: 100% !important;
+            }
+ 
+        }

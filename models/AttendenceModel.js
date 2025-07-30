@@ -25,7 +25,7 @@ const attendenceSchema=mongoose.Schema({
         type:mongoose.Schema.ObjectId,
          ref:"Lecture",
          required:true
-     },
+    },
     attendenceStudent:{
         type:[attendence_record_schema],
         validate:function (v) {
@@ -33,12 +33,12 @@ const attendenceSchema=mongoose.Schema({
         },
         message: 'attendence record will not be empty'
     },
-    lastTaken:{
-        type:Boolean,
-        default:true,
-    },
     Date:{
         type:String,
+        required:true
+    },
+    no_of_classes:{
+        type:Number,
         required:true
     }
 })

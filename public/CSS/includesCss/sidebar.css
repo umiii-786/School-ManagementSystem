@@ -4,6 +4,7 @@
     flex-direction: column;
     align-items: center;
     width: 250px;
+    min-height: 100vh;
 }
 
 .ul {
@@ -11,6 +12,7 @@
     display: flex;
     flex-direction: column;
     transition: all 0.5s linear;
+
 }
 
 .inner_ul {
@@ -33,7 +35,7 @@ li {
     display: flex;
     justify-content: center;
     padding: 10px 12px;
-    box-shadow: var( --sidebutton-boxshadow);
+    box-shadow: var(--sidebutton-boxshadow);
     transition: all 0.3s ease;
     width: 90%;
     margin: 15px 0px;
@@ -47,10 +49,12 @@ li {
 .inner_ul>li {
     list-style: disc;
 }
-.inner_ul>li>a{
+
+.inner_ul>li>a {
     font-size: 15px;
 }
-.inner_ul>li:nth-child(1){
+
+.inner_ul>li:nth-child(1) {
     margin-top: 0px;
 }
 
@@ -72,21 +76,38 @@ li>a {
     box-shadow: inset -3px -3px 7px #ffffff,
         inset 3px 3px 5px #ceced1;
 } */
-.ul>li:hover:before{
+.ul>li:hover:before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    box-shadow:var(--sidebuttonHover-shadow);
-    
+    box-shadow: var(--sidebuttonHover-shadow);
+
 }
-.ul>li{
+
+.ul>li {
     font-size: 18px;
     color: var(--sidebutton-color);
 }
 
 li>a:hover {
     color: #3498db;
+}
+
+.questlogo {
+    width: 200px;
+    height: 200px;
+    margin: 20px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: var(--sidebutton-boxshadow);
+}
+
+.questlogo>img {
+    width: 90%;
+    height: 90%;
 }

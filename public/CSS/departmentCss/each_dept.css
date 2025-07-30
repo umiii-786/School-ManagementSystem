@@ -1,0 +1,314 @@
+  .course_curriculum {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+  }
+
+  .main_Container {
+      width: 90%;
+
+  }
+
+  .both_sides {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+  }
+
+  .h1 {
+      color: var(--tableColor);
+      text-transform: capitalize;
+      margin: 20px 0px;
+  }
+
+  .donebutton {
+      background-color: rgb(21, 219, 21);
+      margin-top: 5px;
+
+  }
+
+  .course_btns {
+      padding: 10px;
+      font-weight: 900;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      width: 100%;
+      margin: 20px 0px;
+      cursor: pointer;
+      color: white;
+
+  }
+
+  .right_side {
+      display: flex;
+      flex-direction: column;
+      width: 67%;
+  }
+
+  .left_side {
+      display: flex;
+      flex-direction: column;
+      width: 30%;
+      overflow: hidden;
+  }
+
+  .teachers {
+      width: 100%;
+      /*  box-shadow: var(--sidebutton-boxshadow);*/
+      max-height: 60vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      visibility: hidden;
+      transition: all linear 1s;
+
+  }
+
+  .each_teacher {
+      display: flex;
+      align-items: center;
+      width: 90%;
+      /*box-shadow: var(--sidebutton-boxshadow);*/
+      box-shadow: 0px 4px 1px gray;
+      height: 100px;
+      margin: 20px 0px;
+      color: var(--tableColor);
+  }
+
+  .facultyOption {
+      width: 50px;
+      height: 50px;
+  }
+
+  .profile_pic {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+  }
+
+  .upper_div {
+      display: flex;
+      align-items: center;
+  }
+
+  .lower_div {
+      color: var(--tableColor);
+  }
+
+  .upper_div_info>span {
+      font-size: 12px;
+  }
+
+  .upper_div_info {
+      display: flex;
+      flex-direction: column;
+  }
+
+  :root {
+      --primary-color: #2196F3;
+      --secondary-color: #FFFFFF;
+      --background-color: #F0F0F0;
+      --text-color: #333333;
+  }
+
+  .checkbox-wrapper {
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+  }
+
+  /* Hide default checkbox */
+  .checkbox-wrapper input[type="checkbox"] {
+      display: none;
+  }
+
+  .checkbox-wrapper label {
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin: 0 auto;
+  }
+
+  /* Pulsating */
+  @keyframes pulse {
+      0% {
+          transform: scale(1);
+      }
+
+      50% {
+          transform: scale(1.1);
+      }
+
+      100% {
+          transform: scale(1);
+      }
+  }
+
+  .checkbox-wrapper input[type="checkbox"]+label {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--text-color);
+      border-radius: 50%;
+  }
+
+  .checkbox-wrapper input[type="checkbox"]:checked+label {
+      background: var(--primary-color);
+      animation: pulse 1s infinite;
+  }
+
+  .firstHeading {
+      color: var(--sidebutton-color);
+      margin: 10px 10px;
+      font-size: 10px;
+  }
+
+  .select_btn {
+      background-color: #333333;
+      color: white;
+      width: 60%;
+      margin-left: 10px;
+      visibility: hidden;
+  }
+
+  .form {
+      display: none;
+  }
+
+
+  .faculty_members {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+  }
+
+  .faculty_card {
+      position: relative;
+      background-color: #ECEFF1;
+      width: 180px;
+      height: 130px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0px 0px 4px gray;
+      margin: 20px 0px;
+  }
+
+  .menu-icon {
+      position: absolute;
+      right: 0;
+      width: 53px;
+      height: 53px;
+      filter: invert(40%) sepia(57%) saturate(2228%) hue-rotate(189deg) brightness(96%) contrast(87%);
+  }
+
+  .svg-background {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #1E88E5;
+      -webkit-clip-path: polygon(0 0, 14% 0, 48% 100%, 0% 100%);
+      clip-path: polygon(0 0, 14% 0, 48% 100%, 0% 100%);
+  }
+
+  .svg-background2 {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 20px;
+      background-color: rgba(0, 0, 0, 0.12);
+      z-index: -9;
+      -webkit-clip-path: polygon(0 0, 14% 0, 48% 100%, 0% 100%);
+      clip-path: polygon(0 0, 14% 0, 48% 100%, 0% 100%);
+  }
+
+  .profile-img {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      margin-top: 20px;
+      margin-left: 40px;
+      border-radius: 50%;
+  }
+
+  .circle {
+      position: absolute;
+
+      background-color: #ECEFF1;
+      border-radius: 50%;
+      margin-top: 50.5px;
+      margin-left: 35px;
+  }
+
+  .text-container {
+      position: absolute;
+      right: 0;
+      margin-right: 60px;
+      margin-top: 60px;
+      max-width: 200px;
+      text-align: center;
+  }
+
+  .title-text {
+      color: #263238;
+      font-size: 20px;
+      font-weight: 600;
+      margin-top: 5px;
+  }
+
+  .info-text {
+      /* margin-top: 10px;*/
+      font-size: 12px;
+  }
+
+  .desc-text {
+      font-size: 14px;
+      margin-top: 10px;
+  }
+
+  .black_heading {
+      color: var(--sidebutton-color);
+  }
+
+  .alert_message {
+      background: #ff000066;
+      color: white;
+      padding: 5px 20px;
+      position: relative;
+      z-index: 10;
+      left: 200%;
+      transition: all linear 0.5s;
+  }
+
+  @media screen and (max-width:750px) {
+    .right_side{
+        width: 50%;
+    }
+    .left_side{
+        width: 50%;
+    }
+  }
+  @media screen and (max-width:550px) {
+    .both_sides{
+        flex-direction: column-reverse;
+    }
+    .left_side{
+        width: 90%;
+    }
+    .right_side{
+        width: 90%;
+    }
+    .faculty_members{
+        flex-direction: column;
+        align-items: center;
+    }
+    .faculty_card{
+        width: 80%;
+    }
+  }

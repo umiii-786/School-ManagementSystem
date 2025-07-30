@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/CSS/searchform.css">
+    <link rel="stylesheet" href="/CSS/teacherCss/manage_teach.css">
+    <link rel="stylesheet" href="/CSS/table.css">
+    
+</head>
+
+<body>
+    <% layout('boilerplate') -%>
+        <h4 class="manage_heading">Search Teachers Easily</h4>
+        <form action="/teacher/manage" class="options">
+            <input type="text" name="name" placeholder="search by name" class="search_inputs">
+            <select name="department" id="selectboxes_Options" class="search_inputs">
+                <option>All</option>
+                <% for( let i=0; i < departmentNames.length; i++ ) { %>
+                    <option>
+                        <%= departmentNames[i].department_name %>
+                    </option>
+                    <% } %>
+            </select>
+
+            <select name="qualification" id="selectboxes_Options" class="search_inputs">
+                <option>Bachelor</option>
+                <option>Master</option>
+                <option>PHD</option>
+            </select>
+
+            <select name="post" id="selectboxes_Options" class="search_inputs">
+                <option>Lecturer</option>
+                <option>Assistant Professor</option>
+                <option>Associate Professor</option>
+                <option>Professor</option>
+            </select>
+            <button class="search-btn">Search</button>
+        </form>
+
+        <% if (data.length==0) { %>
+            <div class="image">
+                <img src="../../images/filterimagerm.png" alt="filter">
+            </div>
+
+            <% } else {%>
+                <section>
+                    <h1 class="h1">Filtered Data</h1>
+                    <div class="filter_data_section">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Cnic</th>
+                                    <th>Eduction</th>
+                                    <th>Phone</th>
+                                    <th></th>
+                                    <% if (itself.Role=='Admin' ) { %>
+                                        <th></th>
+                                        <th></th>
+                                        <% } %>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <% for( let i=0; i < data.length; i++ ) { %>
+
+                                    <tr>
+
+                                        <td data-title='Provider Name'>
+                                            <i class="fa-solid fa-graduation-cap"></i>
+                                            <%= data[i].username %>
+                                        </td>
+                                        <td data-title='E-mail'>
+                                            <i class="fa-regular fa-id-badge"></i></i>
+                                            <%= data[i].identity.cnic %>
+                                        </td>
+                                        <td data-title='E-mail'>
+                                            <i class="fa-solid fa-landmark"></i>
+                                            <%= data[i].qualification %>
+                                        </td>
+                                        <!--  -->
+                                        <td class='select'>
+                                            <a class='button profile_button' href='/teacher/<%=data[i]._id  %>'>
+                                                View Profile
+                                            </a>
+                                        </td>
+
+
+                                        <% if (itself.Role=='Admin' ) { %>
+                                            <td class='select'>
+
+
+                                                <a class='button edit' href='/teacher/edit/<%= data[i]._id %>'>
+                                                    Edit
+                                                </a>
+                                            </td>
+                                            <td class='select'>
+                                                <form action="/teacher/<%= data[i]._id %>?_method=DELETE" method="post">
+                                                    <button class='button delete' style="border:none ;">
+                                                        Delete
+                                                    </button>
+                                                </form>
+                                            </td>
+
+                                            <% } %>
+                                    </tr>
+
+                                    <% } %>
+
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </section>
+                <% } %>
+
+
+
+
+
+</body>
+<script src="https://kit.fontawesome.com/a4fa4ff0b8.js" crossorigin="anonymous"></script>
+
+</html>

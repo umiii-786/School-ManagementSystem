@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/CSS/departmentCss/each_dept.css">
+</head>
+
+<body>
+    <% layout('boilerplate') -%>
+        <div class="main_Container">
+
+            <div class="both_sides">
+
+
+                <div class="right_side">
+                    <h3 class="h1">
+                        <%= department.department_name %>
+                    </h3>
+                    <h4 class="h1 black_heading">
+                        Faculty of the Department
+                    </h4>
+                    <div class="faculty_members">
+
+                        <% for( let i=0; i < department.faculty_members.length; i++ ) { %>
+
+                            <div class="faculty_card">
+                                <div class="svg-background"></div>
+                                <div class="svg-background2"></div>
+                                <div class="circle"></div>
+                                <img class="profile-img" src="<%= department.faculty_members[i].profileImg %>">
+                                <div class="text-container">
+                                    <p class="title-text">
+                                        <%= department.faculty_members[i].username %>
+                                    </p>
+                                    <p class="info-text">
+                                        <%= department.faculty_members[i].post %>
+                                    </p>
+                                    <!-- <p class="desc-text"><%= department.faculty_members[i].qualification %></p> -->
+                                </div>
+                            </div>
+
+                            <% } %>
+
+                    </div>
+                </div>
+
+            <% if (itself.Role=='Admin') { %>
+             
+          
+                <div class="left_side">
+                    <div class="alert_message"></div>
+                    <button class="donebutton course_btns" type="button" onclick="showAvailableFaculty()">Faculty Member
+                        ➕</button>
+                    <div class="teachers">
+
+                        <% for( let i=0; i < teachers.length; i++ ) { %>
+
+                            <div class="each_teacher">
+                                <!-- <input type="checkbox" class="facultyOption" n /> -->
+                                <div class="checkbox-wrapper">
+                                    <input type="checkbox" id="pulse<%= i %>" name="faculty"
+                                        value="<%= teachers[i]._id %>">
+                                    <label for="pulse<%= i %>"></label>
+                                </div>
+                                <div class="teacher_info">
+                                    <div class="upper_div">
+                                        <img src="<%= teachers[i].profileImg %>" alt="profilePic" class="profile_pic">
+                                        <div class="upper_div_info">
+                                            <span class="position"><span class="firstHeading">Post:</span>
+                                                <%= teachers[i].post %>
+                                            </span>
+                                            <span class="cnic"><span class="firstHeading">Cnic:</span>
+                                                <%= teachers[i].identity.cnic %>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="lower_div"><span class="firstHeading">Name:</span>
+                                        <%= teachers[i].username %>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <% } %>
+                    </div>
+
+                    <button class="course_btns select_btn" onclick="select_faculty()">Add/Done</button>
+                </div>
+
+                  <% } %>
+            </div>
+            <img src="<%= department.curriculum_image %>" alt="curriculum image" class="course_curriculum">
+        </div>
+
+        <form action="/department/<%= department._id %>?_method=PUT" class="form"
+            enctype="application/x-www-form-urlencoded" method="POST">
+            <input type="text" name="members" id="members">
+        </form>
+
+    </body>
+    <script src="/JS/deptJS/each_dept.js"></script>
+
+
+</html>

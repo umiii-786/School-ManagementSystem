@@ -5,118 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .card {
-            width: 250px;
-            height: 254px;
-            border-radius: 30px;
-            background: var(--bg-color);
-            box-shadow: var(--box-shadow-color);
-            padding: 0px 20px;
-            /* box-shadow: 15px 15px 30px rgb(25, 25, 25), -15px -15px 30px rgb(60, 60, 60); */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-        }
-
-        .main {
-            width: 90%;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .lectures{
-            display: flex;
-            justify-content: space-between;
-        }
-
-        /* box-shadow: 15px 15px 30px rgb(25, 25, 25),
-                -15px -15px 30px rgb(60, 60, 60); */
-
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: var(--bg-color);
-
-        }
-
-        .subjectname {
-            /* display: flex; */
-            /* align-items: cen/ter; */
-            justify-content: center;
-        }
-
-        .subjectname h2 {
-            font-size: 20px;
-            color: var(--tableColor);
-        }
-
-        .subjectname h3 {
-            color: var(--sidebutton-color);
-            font-size: 17px;
-        }
-
-        .section h4 {
-            color: var(--sidebutton-color);
-        }
-
-        .className {
-            color: var(--sidebutton-color);
-            margin: 8px 0px;
-        }
-
-        .className strong {
-            color: var(--tableColor);
-        }
-
-        .attendance_btn {
-            background-color: var(--tableColor);
-            color: var(--text-color);
-            padding: 4px;
-            text-decoration: none;
-            font-size: 15px;
-            text-align: center;
-            display: inline-block;
-            width: 150px;
-            margin: 10px 0px;
-            padding: 7px 0px;
-            border-radius: 6px;
-
-
-        }
-
-        .heading {
-            color: var(--text-color);
-            font-family: cursive;
-            font-style: italic;
-            margin: 30px 0px;
-        }
-
-       
-
-        .previous_taken_date {
-            position: absolute;
-            top: 20px;
-            right: 15px;
-            transform: rotatez(-20deg);
-            display: flex;
-            align-items: center;
-        }
-            .checklogo {
-                width: 25px;
-                height: 25px;
-            }
-
-            .previous_taken_date span {
-                color: red;
-                font-weight: 700;
-            }
-    </style>
+    <link rel="stylesheet" href="/CSS/attendenceCss/attendece_port.css">
 </head>
 
 
@@ -130,69 +19,54 @@
             <div class="lectures">
 
 
-                <% for( let i = 0; i < lectures.length; i++ ) { %>
-                      <% for( let j = 0; j <2; j++ ) { %>
-                        <div class="card">
-                            <div class="subjectname">
-                                <h2>Lecture:</h2>
-                                <h3><%= lectures[i].subject %></h3>
-                            </div>
-        
-        
-                            <div>
-        
-                                <p class="className"><strong>Class:</strong><%= lectures[i].CorrespondClass %></p>
-                                <div class="section">
-                                    <h4>Section <%= j==0?"A":"B"%></h4>
-                                </div>
-        
-                            </div>
-                            <a href=" /attendence/lecture/<%= lectures[i]._id %>/section/<%= j==0?"A":"B"%>" class="btns attendance_btn">Take Attendence</a>
-        
-                            <div class="previous_taken_date">
-                                <img src="../../images/checkrm.png" class="checklogo" alt="taken at">
-                                <span class="date">12-23-32</span>
-                            </div>
-                        </div>
-                      <% } %>
+                <% for( let i=0; i < lectures.length; i++ ) { %>
 
-                <% } %>
-
-                <!-- <div class="lecture">
-                    <h2>Lecture: Mathematics - Algebra</h2>
-                    <p><strong>Class:</strong> 10th Grade</p>
-                    <div class="section-details">
-                        <div class="section">
-                            <h4>Section A</h4>
-                        </div>
-                        <div class="section">
-                            <a href="">Take Attendence</a>
+                    <div class="card">
+                        <div class="subjectname">
+                            <h2>Subject:</h2>
+                            <h3>
+                                <%= lectures[i].course %>
+                            </h3>
                         </div>
 
+                        <div>
+
+                            <p class="className"><strong>Department:</strong>
+                                <%= lectures[i].department.department_name %>
+                            </p>
+                            <p class="className"><strong>Batch:</strong>
+                                <%= lectures[i].batch %>
+                            </p>
+                            <p class="className"><strong>Semester:</strong>
+                                <%= lectures[i].semester_no %>
+                            </p>
+
+
+                        </div>
+
+                        <% if (lectures[i].last_attendence_data!=current_date) { %>
+                            <a href="/attendence/lecture/<%= lectures[i]._id %>" class="btns attendance_btn">Take
+                                Attendence</a>
+                            <% } else { %> <button class="btns attendance_btn">Take
+                                    Attendence</button>
+                                <% }%>
+
+                                    <div class="previous_taken_date">
+                                        <img src="../../images/checkrm.png" class="checklogo" alt="taken at">
+                                        <span class="date">
+                                            <%= lectures[i].last_attendence_data %>
+                                        </span>
+                                    </div>
                     </div>
-                </div> -->
+                    <% } %>
+
+
+
 
             </div>
 
         </div>
-        <script>
-            const allCookies = document.cookie;
 
-            // Parse a specific cookie
-            function getCookieValue(cookieName) {
-                const cookies = document.cookie.split("; ");
-                for (let cookie of cookies) {
-                    const [name, value] = cookie.split("=");
-                    if (name === cookieName) {
-                        return value;
-                    }
-                }
-                return null;
-            }
-            console.log(getCookieValue("theme"))
-            document.cookie = "theme=dark"
-            console.log(getCookieValue("theme"))
-        </script>
 </body>
 
 </html>

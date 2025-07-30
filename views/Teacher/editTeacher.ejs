@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/CSS/studentCss/studentedit.css">
+    <style>
+        
+        .courses_container {
+        
+            margin: 40px auto;
+
+        }
+        .lectures {
+            width: 100%;
+            display: flex;
+            gap: 30px;
+        }
+
+        .lecture-card {
+            color: var(--sidebutton-color);
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            background: var(--bg-color);
+            box-shadow: var(--forminputShadow);
+            position: relative;
+            width: 200px;
+        }
+        .h1{
+            color: var(--tableColor);
+            margin: 10px 0px;
+        }
+        .deleteImg{
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 20px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('../includes/navbar.ejs') %>
+        <div class="container">
+            <div class="card user-card">
+                <%- include('../includes/alerts.ejs') %>
+                    <span id="purpose" style="visibility: none;">edit</span>
+                    <h6 class="Info_message_popup"></h6>
+                    <div class="headerSection">
+                      
+                        <div class="profile-section">
+
+                            <div class="img">
+                                <img src="<%= data.profileImg %>" alt="User Profile" class="profile-img">
+                            </div>
+                            <h4 class="tagname">
+                                <%= data.identity.Role %>
+                            </h4>
+                            <h3 class="subheading">Member of :<%= data.belong_to.department_name %>
+                            </h3>
+                            <h4 class="subheading section_name">Designation : <%= data.post %>
+                            </h4>
+
+
+                        </div>
+                  
+                        <h1 class="h1">Let's Make Changes</h1>
+                    </div>
+                    <form class="info-section registerForm" action="/teacher/<%= data.id %>?_method=PUT" method="post">
+                        <div class="info">
+                            <h6>Information</h6>
+                            <div class="info-row">
+                                <div>
+                                    <p>Name</p>
+                                    <h6 class="fieldContainer"><input type="text" class="controls inputs"
+                                            name="username" value="<%= data.username %>">
+                                        <label class="error-label"></label>
+                                    </h6>
+                                </div>
+                                <div>
+                                    <p>Gender</p>
+                                    <h6 class="fieldContainer"><select name="gender" id="roleOptions"
+                                            class="controls inputs" value="<%= data.gender %>">
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                            <option>Custom</option>
+                                        </select>
+                                        <label class="error-label"></label>
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="info-row">
+                                <div>
+                                    <p>Father</p>
+                                    <h6 class="fieldContainer"> <input type="text" class="controls inputs"
+                                            name="father_name" value="<%= data.father_name %>">
+                                        <label class="error-label"></label>
+                                    </h6>
+                                </div>
+                                <div>
+                                    <p>Date Of Birth</p>
+                                    <h6 class="fieldContainer"><input type="number" class="controls inputs" name="age"
+                                            value="<%= data.age %>">
+                                        <label class="error-label"></label>
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="info-row">
+                                <div>
+                                    <p>Cnic</p>
+                                    <h6 class="fieldContainer"><input type="number" id="cnic" class="controls inputs"
+                                            name="cnic" value="<%= data.identity.cnic %>">
+                                        <label class="error-label"></label>
+                                    </h6>
+                                </div>
+                                <div>
+                                    <p>Phone</p>
+                                    <h6 class="fieldContainer"><input type="number" class="controls inputs" name="phone"
+                                            value="0<%= data.phone %>">
+                                        <label class="error-label"></label>
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="info-row">
+                                <div>
+                                    <p>Qualification</p>
+                                    <h6 class="fieldContainer"> <input type="text" class="controls inputs"
+                                            name="qualification" value="<%= data.qualification %>">
+                                        <label class="error-label"></label>
+                                    </h6>
+                                </div>
+
+                                
+                                <input type="text" style="display: none;" name="post" value="<%= data.post %>">
+                            </div>
+
+                        </div>
+
+                        <div class="courses_container">
+                            <h3 class="h1">Conducting Lectures</h3>
+                            <div class="lectures">
+                                <% for(let i=0; i < data.lectures.length; i++) { %>
+                                    <div class="lecture-card">
+                                        <img src="/images/deleteImg.png" alt="deleteImg" class="deleteImg"  onclick="deleteCourse(this)">
+                                        <input type="text" name="lectures[<%= i %>]" value="<%= data.lectures[i]._id %>" style="display:none">
+                                        <h3>📘 <%= data.lectures[i].course %>
+                                        </h3>
+                                        <p>Semester: <%= data.lectures[i].semester_no %>
+                                        </p>
+                                        <p>Batch: <%= data.lectures[i].batch %>
+                                        </p>
+                                    </div>
+                                    <% } %>
+                            </div>
+                        </div>
+                        <button class="submit" type="button" onclick="validateForm()">Confirm</button>
+                    </form>
+            </div>
+        </div>
+        <script>
+            function deleteCourse(element){
+                console.log(element)
+                element.parentElement.remove() 
+            }
+        </script>
+        <script src="/JS/AddForm.js"></script>
+</body>
+
+</html>

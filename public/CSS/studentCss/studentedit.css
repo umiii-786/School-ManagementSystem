@@ -1,5 +1,3 @@
-
-
 .container {
     display: flex;
     height: 100%;
@@ -11,7 +9,7 @@
 .card {
     display: flex;
     flex-direction: column;
-    background:var(--bg-color);
+    background: var(--bg-color);
     border-radius: 10px;
     box-shadow: var(--box-shadow-color);
     overflow: hidden;
@@ -33,7 +31,7 @@
     border-radius: 50%;
    
 } */
-.profile-details{
+.profile-details {
     text-align: center;
 }
 
@@ -97,13 +95,131 @@
     font-weight: bold;
 }
 
-.info h6{
+.info h6 {
 
-    color:var(--tableColor);
+    color: var(--tableColor);
 }
+
 .info-row h6 {
     font-size: 14px;
     margin: 0.5rem 0 0;
 }
 
-/* Social Links */
+.Info_message_popup {
+    text-align: center;
+    color: rgb(199, 16, 16);
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+/* */
+.inputs {
+    width: 40%;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 7px 0px rgb(189, 192, 189);
+    background: transparent;
+    border: 1px solid rgb(207, 193, 193);
+    outline: none;
+    color: var(--sidebutton-color);
+}
+
+.headerSection {
+    display: flex;
+    align-items: center;
+    margin: 30px;
+    margin-bottom: 10px;
+}
+
+.h1 {
+    margin-left: 50px;
+    /* text-shadow: 1px 16px 9px rgb(53, 49, 49); */
+    font-size: 35px;
+    color: var(--tableColor)
+}
+
+.submit {
+    background-color: var(--tableColor);
+    padding: 10px;
+    border: 0px;
+    font-size: 17px;
+    font-weight: 600;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background-color: #fd7066;
+}
+
+.tagname {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--tableColor);
+}
+
+.fieldContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.error-label {
+    font-size: 13px;
+    color: rgb(252, 69, 69);
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.profile-section .img {
+
+    height: 150px;
+    margin-top: 1.6em;
+    aspect-ratio: 1;
+    border-radius: 49%;
+    background: #f2f2f3;
+    margin-bottom: 0.4em;
+    box-shadow: var(--profileIconShadow)
+}
+
+select>option {
+    color: black;
+}
+
+.subheading {
+    font-size: 14px;
+    color: var(--sidebutton-color);
+}
+
+.section_name {
+    font-size: 12px;
+}
+
+@media screen and (max-width:950px) {
+    .headerSection {
+        flex-direction: column-reverse;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .info-row {
+
+        flex-direction: column;
+    }
+
+    .inputs {
+        width: 100%;
+    }
+
+    .info-row div:last-child {
+        margin-right: 1rem;
+    }
+    .subheading{
+        text-align: center;
+    }
+}

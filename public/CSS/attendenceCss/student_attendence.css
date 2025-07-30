@@ -1,0 +1,197 @@
+    .attendenceCard {
+            width: 200px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-color);
+            box-shadow: var(--alertBoxShadow);
+            border-radius: 8px;
+        }
+
+        .attendce_student_profile {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: contain;
+        }
+
+        .radio-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 5px;
+            border: none;
+        }
+
+        /* Hide the default radio button appearance */
+        .status_button {
+            display: none;
+        }
+
+        /* Custom circle styling */
+        .status_label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 35px;
+            height: 35px;
+            background-color: var(--bg-color);
+            box-shadow: var(--alertBoxShadow);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            text-align: center;
+            font-weight: 800;
+            color: var(--sidebutton-color);
+        }
+
+        /* Change color and scale on hover */
+        .status_label:hover {
+            /* #007bff */
+
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .label1:hover {
+            background-color: #28a745;
+        }
+
+        .label2:hover {
+            background-color: red;
+        }
+
+        .label3:hover {
+            background-color: yellow;
+            color: black;
+        }
+
+
+        /* Change background when selected */
+        .status_button:checked+.label1 {
+            background-color: #28a745;
+            color: white;
+            /* color: white; */
+        }
+
+        .status_button:checked+.label2 {
+            background-color: red;
+            color: white;
+        }
+
+        .status_button:checked+.label3 {
+            background-color: yellow;
+            color: black;
+        }
+
+
+
+        .studname {
+            color: var(--sidebutton-color);
+            margin: 10px 0px;
+        }
+
+        .attendenceContainer {
+            width: 90%;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .upper_header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .left_header {
+            display: flex;
+        }
+
+        .upper_header h4 {
+            margin: 0px 10px;
+            color: var(--sidebutton-color);
+        }
+
+        .text_second_part {
+            color: var(--tableColor);
+              font-size: 20px;
+        }
+
+        .total_students {
+            color: var(--sidebutton-color);
+            margin-left: 10px;
+            font-size: 20px;
+        }
+
+        .submit_btn {
+            background-color: var(--tableColor);
+            color:var(--sidebutton-color);
+            padding: 10px;
+            border-radius: 4px;
+            border: none;
+            margin: 20px 0px;
+            cursor: pointer;
+        }
+
+        .shownMessageDiv {
+            color: var(--sidebutton-color);
+            margin: auto;
+            width: 50%;
+            text-align: center;
+        }
+
+        .right_header {
+            display: flex;
+            align-items: center;
+        }
+
+        .student_count {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        .select_box {
+            padding: 0px 10px;
+            width: 180px;
+            border: none;
+            font-size: 20px;
+            box-shadow: var(--alertBoxShadow);
+            -webkit-appearance: button;
+            appearance: button;
+            outline: none;
+            background: none;
+            color: var(--sidebutton-color);
+        }
+        .left_header{
+            display: flex;
+            flex-direction: column;
+        }
+        .left_header>h4{
+            color: var(--tableColor);
+        }
+        .left_header>h4>span{
+            margin-right:7px;
+            color: var(--sidebutton-color) !important;
+        }
+        select>option{
+            color: black;
+        }
+        .no_of_classes{
+            color: var(--sidebutton-color);
+            margin-bottom: 10px;
+        }
+        .no_of_classes>h4{
+            font-size: 14px;
+            margin: 5px 0px;
+        }
+        .left_header>h4{
+            margin-left: 0px;
+        }

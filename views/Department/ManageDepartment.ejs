@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/CSS/searchform.css">
+    <link rel="stylesheet" href="/CSS/departmentCss/manage_dept.css">
+</head>
+
+<body>
+    <% layout('boilerplate') -%>
+        <h4 class="manage_heading">Student Data Filters</h4>
+        <div class="options">
+            <input type="text" placeholder="search by department name" class="search_inputs">
+            <button class="search-btn" onclick="searchDepartment()">Search</button>
+        </div>
+
+        <section>
+            <h1 class="h1">Here Are All Departments</h1>
+            <div class="all_departments">
+                <% for( let i=0; i < data.length; i++ ) { %>
+                    <div class="each_department">
+                        <div class="deptname">
+                            <%= data[i].departmentName %>
+                        </div>
+                        <div class="total_Students">Totals Students</div>
+                        <div class="total_Students">
+                            <%= data[i].studentCount %>
+                        </div>
+                        <a class='button profile_button' href='/department/<%=data[i].departmentId  %>'>
+                            View
+                        </a>
+                    </div>
+
+                    <% } %>
+
+            </div>
+        </section>
+
+
+
+
+
+
+</body>
+<script>
+    const departments = <%- JSON.stringify(data) %>; 
+</script>
+<script src="/JS/deptJS/manage_dept.js"></script>
+<!-- <script src="https://kit.fontawesome.com/a4fa4ff0b8.js" crossorigin="anonymous"></script> -->
+
+</html>

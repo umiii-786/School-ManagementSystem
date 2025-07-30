@@ -9,7 +9,8 @@ const attendencObjectSchema=joi.object({
 const AttendenceSchemaValidation=joi.object({
     attendenceStudent:joi.array().items(attendencObjectSchema).min(1),
     Date:joi.string().required() ,
-    lectureId:joiObjectId().required()
+    lectureId:joiObjectId().required(),
+    no_of_classes:joi.number().required()
 })
 
 module.exports.AttendenceSchemaValidation=AttendenceSchemaValidation;

@@ -1,0 +1,176 @@
+ .options {
+     width: 90%;
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     align-items: center;
+ }
+
+ .inputs {
+     width: 100%;
+     padding: 10px;
+     border-radius: 4px;
+     box-shadow: var(--classSection-Shadow);
+     background: transparent;
+     border: 0px;
+     outline: none;
+     color: var(--sidebutton-color);
+     margin: 0px 10px;
+ }
+
+ .heading {
+     color: var(--tableColor);
+     font-weight: bolder;
+ }
+
+ .sub-heading {
+     font: 700;
+     margin: 10px;
+ }
+
+ .input-div {
+     position: relative;
+     width: 130px;
+     height: 130px;
+     border-radius: 20%;
+     border: 2px solid var(--tableColor);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     overflow: hidden;
+     box-shadow: 0px 0px 30px rgb(255 140 140 / 35%), inset 0px 0px 20px var(--tableColor), 0px 0px 10px var(--tableColor);
+     /* animation: flicker 2s linear infinite;*/
+ }
+
+
+ .icon {
+     color: var(--tableColor);
+     font-size: 2rem;
+     cursor: pointer;
+     animation: iconflicker 2s linear infinite;
+ }
+
+ .input {
+     position: absolute;
+     opacity: 0;
+     width: 100%;
+     height: 100%;
+     cursor: pointer !important;
+ }
+
+ @keyframes flicker {
+     0% {
+         border: 2px solid var(--tableColor);
+         box-shadow: 0px 0px 100px var(--tableColor), inset 0px 0px 10px var(--tableColor), 0px 0px 5px rgb(255, 255, 255);
+     }
+
+     5% {
+         border: none;
+         box-shadow: none;
+     }
+
+     10% {
+         border: 2px solid var(--tableColor);
+         box-shadow: 0px 0px 100px var(--tableColor), inset 0px 0px 10px var(--tableColor), 0px 0px 5px rgb(255, 255, 255);
+     }
+
+     25% {
+         border: none;
+         box-shadow: none;
+     }
+
+     30% {
+         border: 2px solid var(--tableColor);
+         box-shadow: 0px 0px 100px var(--tableColor), inset 0px 0px 10px var(--tableColor), 0px 0px 5px rgb(255, 255, 255);
+     }
+
+     100% {
+         border: 2px solid var(--tableColor);
+         box-shadow: 0px 0px 100px var(--tableColor), inset 0px 0px 10px var(--tableColor), 0px 0px 5px rgb(255, 255, 255);
+     }
+ }
+
+ @keyframes iconflicker {
+     0% {
+         opacity: 1;
+     }
+
+     5% {
+         opacity: 0.2;
+     }
+
+     10% {
+         opacity: 1;
+     }
+
+     25% {
+         opacity: 0.2;
+     }
+
+     30% {
+         opacity: 1;
+     }
+
+     100% {
+         opacity: 1;
+     }
+ }
+
+
+ .input_heading_div {
+     display: flex;
+     flex-direction: column;
+     width: 60%;
+ }
+
+ .file_uploader_and_heading {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+ }
+
+ .donebutton {
+     background-color: rgb(21, 219, 21);
+     margin-top: 5px;
+
+ }
+
+ .course_btns {
+     padding: 10px;
+     font-weight: 900;
+     font-size: 16px;
+     border: none;
+     border-radius: 4px;
+     width: 180px;
+     margin: 20px 0px;
+     cursor: pointer;
+     color: white;
+     margin-left: 10px;
+
+ }
+
+ #filename {
+     color: var(--sidebutton-color);
+ }
+
+ .errormsg {
+     color: red;
+     font-size: 13px;
+     margin-left: 10px;
+     margin-top: 5px;
+
+ }
+ @media screen and (max-width:450px){
+    .options{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .input-div{
+        width: 100%;
+        height: 250px;
+    }
+    .input_heading_div{
+        width: 100%;
+        align-items: center;
+    }
+ }

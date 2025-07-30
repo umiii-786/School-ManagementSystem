@@ -4,6 +4,7 @@
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.7",
     "date-fns": "^4.1.0",
+    "dotenv": "^17.2.1",
     "ejs": "^3.1.10",
     "ejs-mate": "^4.0.0",
     "express": "^4.21.0",
@@ -23,15 +24,24 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev":"nodemon app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/umiii-786/School-ManagementSystem.git"
+  },
+  "bugs": {
+    "url": "https://github.com/umiii-786/School-ManagementSystem/issues"
+  },
+  "homepage": "https://github.com/umiii-786/School-ManagementSystem#readme",
+  "description": ""
 }

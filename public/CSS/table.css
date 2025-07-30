@@ -34,13 +34,14 @@ th {
 }
 
 thead th {
-    background-color:var(--tableColor);
+    background-color: var(--tableColor);
     /* color: black; */
     border: 1px solid var(--tableColor);
-    color:black;
+    color: black;
 }
-td{
-    color:var(--sidebutton-color); 
+
+td {
+    color: var(--sidebutton-color);
 }
 
 @media (min-width: 460px) {
@@ -56,7 +57,7 @@ td{
 
 }
 
-@media (min-width: 720px) {
+@media (min-width: 620px) {
     table {
         display: table;
     }
@@ -99,6 +100,57 @@ td{
 
     tfoot th {
         display: table-cell;
+    }
+
+}
+
+@media screen and (max-width:1050px) {
+
+    td,
+    th {
+        padding: 5px;
+    }
+
+}
+
+@media screen and (max-width:750px) {
+    .button {
+        max-width: 70px;
+        font-size: 10px;
+    }
+
+
+}
+
+@media screen and (max-width:620px) {
+    tbody {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    tbody>tr {
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+        align-items: center;
+        background-color: var(--tableRowsColor);
+        margin: 10px;
+    }
+
+    td {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:620px) {
+    tbody {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    tbody>tr {
+        width: 90%;
     }
 
 }

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Card</title>
+    <link rel="stylesheet" href="/CSS/studentCss/studentprofile.css">
+    <link rel="stylesheet" href="/CSS/searchform.css">
+    <link rel="stylesheet" href="/CSS/teacherCss/teacher_prof.css">
+</head>
+
+<body>
+    <%- include('../includes/navbar.ejs') %>
+    <%- include('../includes/alerts.ejs') %>
+        <div class="container">
+            <div class="card user-card">
+                <div class="profile-section">
+                    <div class="profile-details text-center">
+                        <img src="<%= data.profileImg %>" alt="User Profile" class="profile-img">
+                        <h6 class="Name">
+                            <%= data.username %>
+                        </h6>
+                        <p class="designation">Faculty Member of <br>
+                            <%= data.belong_to.department_name %>
+                        </p>
+                      
+                         <% if (itself.Role!='Admin' && (itself.information._id.toString()==data._id.toString())) { %>
+                        <i class="icon-edit" onclick="showUploader()">&#9998;</i>
+                        <form action="/teacher/<%= data.id %>/pic?_method=PATCH" method="post"
+                            enctype="multipart/form-data" class="profileImg_Form">
+                            <input type="file" name="profileImg" id="profileInput" accept=".jpg, .png, .jpeg"
+                                onchange="CheckImg()">
+                        </form>
+                        <% } %>
+                    </div>
+
+                </div>
+
+
+                <div class="info-section">
+                    <div class="info">
+                        <h6>Information</h6>
+                        <div class="info-row">
+                            <div>
+                                <p>Father</p>
+                                <h6>
+                                    <%= data.father_name %>
+                                </h6>
+                            </div>
+                            <div>
+                                <p>Gender</p>
+                                <h6>
+                                    <%= data.gender %>
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <div>
+                                <p>Cnic</p>
+                                <h6>
+                                    <%= data.identity.cnic %>
+                                </h6>
+                            </div>
+                            <div>
+                                <p>Phone</p>
+                                <h6>0<%= data.phone %>
+                                </h6>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="projects">
+                        <h6>Academic</h6>
+                        <div class="info-row">
+                            <div>
+                                <p>Education</p>
+                                <h6>
+                                    <%= data.qualification %>
+                                </h6>
+                            </div>
+                            <div>
+                                <p>Designation</p>
+                                <h6>
+                                    <%= data.post %>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+
+        <div class="courses_container">
+            <h3 class="h1">Conducting Lectures</h3>
+            <div class="lectures">
+                <% for(let i=0; i < data.lectures.length; i++) { %>
+                    <div class="lecture-card">
+                        <h3>📘 <%= data.lectures[i].course %>
+                        </h3>
+                        <p>Semester: <%= data.lectures[i].semester_no %>
+                        </p>
+                        <p>Batch: <%= data.lectures[i].batch %>
+                        </p>
+                    </div>
+                    <% } %>
+            </div>
+
+             <% if (itself.Role=='Admin') { %>
+            <button class="donebutton course_btns" type="button" onclick="showCourses_input()">Assign
+                Course➕</button>
+                <div class="error_message"></div>
+            <form action="/teacher/<%= data.id %>/course" method="POST" class="options">
+                <input type="text" name="course" placeholder="Enter Course" class="search_inputs"
+                    style="margin-left: 0px;">
+                <input type="number" name="semester_no" placeholder="Enter Semester no" class="search_inputs">
+                <select name="batch" class="search_inputs">
+                    <option>2022</option>
+                    <option>2023</option>
+                    <option>2024</option>
+                    <option>2025</option>
+                </select>
+                <input type="text" name="department" class="search_inputs" style="display: none;"
+                    value="<%= data.belong_to._id %>">
+                <button class="select_btn" type="button" onclick="select_course()">Add/Done</button>
+            </form>
+            <% } %>
+        </div>
+
+       <script src="/JS/teacherJS/teach_prof.js"></script>
+</body>
+
+</html>

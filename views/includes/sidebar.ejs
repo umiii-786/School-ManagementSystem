@@ -1,64 +1,114 @@
 <link rel="stylesheet" href="/CSS/includesCss/sidebar.css">
-<div class="sidebar">
-    <!-- <label class="btn cancel" for="check"><i class="fas fa-times"></i></label> -->
+<% if (itself) { %>
+    <div class="sidebar">
+        <!-- <label class="btn cancel" for="check"><i class="fas fa-times"></i></label> -->
+        <div class="questlogo">
+            <img src="/images/questlogorm.png" alt="questlogo">
+        </div>
 
-    <ul class="ul">
-        <li  onclick="showList(this)" >Dashboards  <img src="/images/downarrow.png" alt="arrow"></li> 
-         <ul class="inner_ul">
-            <li><a href="#">Student</a></li>
-            <li ><a href="#">Teacher</a></li>
-            <li><a href="#">Sales</a></li>
-        </ul> 
-    </ul>
+        <% if (itself.Role=='Student' ) { %>
+            <style>
+                .ul>li:hover:before {
+                    content: unset;
+                }
+            </style>
 
+            <ul class="ul">
 
-    <ul class="ul">
-        <li  onclick="showList(this)">Student  <img src="/images/downarrow.png" alt="arrow"></li> 
-         <ul class="inner_ul">
-            <li><a href="/student">Add Student</a></li>
-            <li ><a href="/student/TC">TC Student</a></li>
-            <li><a href="/student/manage">Manage Student</a></li>
-        </ul> 
-    </ul>
-
-    <ul class="ul">
-         <li  onclick="showList(this)">Teacher  <img src="/images/downarrow.png" alt="arrow"></li> 
-         <ul class="inner_ul">
-            <li><a href="/teacher">Add Teacher</a></li>
-            <li ><a href="#">Search</a></li>
-        </ul> 
-    </ul>
-
-    <ul class="ul">
-        <li  onclick="showList(this)">Department  <img src="/images/downarrow.png" alt="arrow"></li> 
-        <ul class="inner_ul">
-           <li><a href="/Department">Add Department</a></li>
-           <li ><a href="/class/manage">Manage Class</a></li>
-       </ul> 
-   </ul>
-   
-   <ul class="ul">
-    <li  onclick="showList(this)">Attendence  <img src="/images/downarrow.png" alt="arrow"></li> 
-    <ul class="inner_ul">
-       <li><a href='/attendence'>Take Attendence</a></li>
-       
-   </ul> 
-</ul>
+                <li><a href="/">About</a></li>
+                <li><a href="/student/<%= itself.information._id %>">Profile</a></li>
 
 
-</div>
-<script>
-    function showList(element){
-       let img=element.firstElementChild
-       let innerList=element.nextElementSibling
-       if(img.src.includes('downarrow.png')){
-           img.src="/images/uparrow.png"
-           innerList.style.display="block"
-       }
-       else{
-           img.src="/images/downarrow.png"
-           innerList.style.display="none"
-       }
-       
-    }
-</script>
+                <!-- <ul class="ul"> -->
+                <li><a href="/student/manage">Explore Students</a></li>
+                <!-- </ul> -->
+                <!-- <ul class="ul"> -->
+                <li><a href="/teacher/manage">Explore Teachers</a></li>
+                <!-- </ul> -->
+
+                <!-- <ul class="ul"> -->
+                <li><a href="/department/<%=  itself.information.department %>">Department</a></li>
+            </ul>
+
+            <% } else if (itself.Role=='Teacher' ) { %>
+                <style>
+                    .ul>li:hover:before {
+                        content: unset;
+                    }
+                </style>
+
+                <ul class="ul">
+
+                    <li><a href="/">About</a></li>
+                    <li><a href="/teacher/<%= itself.information._id %>">Profile</a></li>
+
+
+                    <!-- <ul class="ul"> -->
+                    <li><a href="/student/manage">Explore Students</a></li>
+
+                    <li><a href="/teacher/manage">Explore Teachers</a></li>
+
+                    <li><a href="/department/<%=  itself.information.belong_to %>">Designation</a></li>
+                    <li><a href='/attendence'>Take Attendence</a></li>
+                </ul>
+
+
+
+
+                <% } else { %>
+                    
+                <ul class="ul">
+                        <li onclick="showList(this)">Dashboards <img src="/images/downarrow.png" alt="arrow"></li>
+                        <ul class="inner_ul">
+                            <li><a href="/">About</a></li>
+                        </ul>
+                    </ul>
+
+
+                    <ul class="ul">
+                        <li onclick="showList(this)">Student <img src="/images/downarrow.png" alt="arrow"></li>
+                        <ul class="inner_ul">
+                            <li><a href="/student">Add Student</a></li>
+                            <li><a href="/student/manage">Manage Student</a></li>
+                        </ul>
+                    </ul>
+
+                    <ul class="ul">
+                        <li onclick="showList(this)">Teacher <img src="/images/downarrow.png" alt="arrow"></li>
+                        <ul class="inner_ul">
+                            <li><a href="/teacher">Add Teacher</a></li>
+                            <li><a href="/teacher/manage">Manage Teacher</a></li>
+                        </ul>
+                    </ul>
+
+                    <ul class="ul">
+                        <li onclick="showList(this)">Department <img src="/images/downarrow.png" alt="arrow"></li>
+                        <ul class="inner_ul">
+                            <li><a href="/department">Add Department</a></li>
+                            <li><a href="/department/manage">Manage Department</a></li>
+                        </ul>
+                    </ul>
+
+                    <% } %>
+                       
+                    </ul>
+
+
+    </div>
+
+    <% } %>
+        <script>
+            function showList(element) {
+                let img = element.firstElementChild
+                let innerList = element.nextElementSibling
+                if (img.src.includes('downarrow.png')) {
+                    img.src = "/images/uparrow.png"
+                    innerList.style.display = "block"
+                }
+                else {
+                    img.src = "/images/downarrow.png"
+                    innerList.style.display = "none"
+                }
+
+            }
+        </script>

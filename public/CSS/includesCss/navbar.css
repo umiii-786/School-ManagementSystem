@@ -27,37 +27,41 @@ body {
         inset -5px -5px 10px #ffffff73;
 
     --tableColor: #0098c1;
-    --tableBoxShadow:-3px -3px 7px #ffffff, 3px 3px 5px #5da3ef80, inset -3px -3px 7px #ffffff, inset 3px 3px 5px #5da3ef80;
-    --classSection-Shadow:0px 0px 7px 0px rgb(189, 192, 189);
-    --alertRemoveColor:brightness(1) invert(0);
-       
+    --tableBoxShadow: -3px -3px 7px #ffffff, 3px 3px 5px #5da3ef80, inset -3px -3px 7px #ffffff, inset 3px 3px 5px #5da3ef80;
+    --classSection-Shadow: 0px 0px 7px 0px rgb(189, 192, 189);
+    --alertRemoveColor: brightness(1) invert(0);
 
-    --profileIconShadow:-5px -5px 8px #7c7c7c7a, 5px 5px 8px #3131317a;
+    --ChangeIconColor: unset;
+    --profileIconShadow: -5px -5px 8px #7c7c7c7a, 5px 5px 8px #3131317a;
+    --tableRowsColor:#d6d6d6;
 }
 
 body.dark {
+    --tableRowsColor:#454545;
     --sidebutton-boxshadow: -3px -3px 7px #000000, 3px 3px 5px #323237;
     --bg-color: #212121;
     --box-shadow-color: -3px -3px 7px #000000, 3px 3px 5px #323237, inset -3px -3px 7px #000000, inset 3px 3px 5px #323237;
     --text-color: white;
     --sidebuttonHover-shadow: inset -3px -3px 7px black,
-    inset 3px 3px 5px #323237;
+        inset 3px 3px 5px #323237;
     --sidebutton-color: rgba(233, 229, 229, 0.89);
     --notificationShadow-color: -3px -3px 5px rgba(255, 255, 255, 0.8),
-    3px 3px 5px rgba(0, 0, 0, 0.1);
+        3px 3px 5px rgba(0, 0, 0, 0.1);
     --togleBoxShadow: inset -3px -3px 5px rgba(33, 33, 33, 0.8),
-    inset 3px 3px 5px rgba(0, 0, 0, 0.3),
+        inset 3px 3px 5px rgba(0, 0, 0, 0.3),
         3px 3px 5px rgba(0, 0, 0, 0.5);
-        --alertBoxShadow: 0px 0px 10px 0px rgba(190, 179, 179, 0.2);
-        --forminputShadow: inset 2px 2px 3px #4f4f4f, inset -5px -5px 10px #50454573;
-        
-        --tableColor: rgb(255 140 140);
-        --tableBoxShadow:-3px -3px 7px #ffffff, 3px 3px 5px #ff8c8c, inset -3px -3px 7px #ffffff, inset 3px 3px 5px #ff8c8c;
-        --classSection-Shadow:0px 0px 7px 0px rgb(11 11 30);
+    --alertBoxShadow: 0px 0px 10px 0px rgba(190, 179, 179, 0.2);
+    --forminputShadow: inset 2px 2px 3px #4f4f4f, inset -5px -5px 10px #50454573;
 
-        --alertRemoveColor:brightness(0) invert(1);
-        --profileIconShadow:-5px -5px 8px #ffffff7a,
-                5px 5px 8px #a9a9aa7a;
+    --tableColor: rgb(255 140 140);
+    --tableBoxShadow: -3px -3px 7px #ffffff, 3px 3px 5px #ff8c8c, inset -3px -3px 7px #ffffff, inset 3px 3px 5px #ff8c8c;
+    --classSection-Shadow: 0px 0px 7px 0px rgb(11 11 30);
+
+    --alertRemoveColor: brightness(0) invert(1);
+    --profileIconShadow: -5px -5px 8px #ffffff7a,
+        5px 5px 8px #a9a9aa7a;
+
+    --ChangeIconColor: brightness(0) invert(1);
 }
 
 nav {
@@ -90,7 +94,7 @@ nav {
     font-size: 28px;
     font-weight: 600;
     text-decoration: none;
-    color: var(--sidebutton-color);
+    color: var(--tableColor);
 }
 
 .bars {
@@ -118,7 +122,7 @@ nav {
 
 .name {
     display: flex;
-    margin-right: 30px;
+    margin-right: 10px;
 }
 
 .name>span {
@@ -129,6 +133,8 @@ nav {
     padding: 3px;
     color: var(--sidebutton-color);
     font-family: sans-serif;
+    display: flex;
+    align-items: center;
 }
 
 .alllogos {
@@ -227,3 +233,83 @@ body {
 /* .theme{
     background: var(--bg-color);
 } */
+
+.botimg img {
+    width: 40px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.botimg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    box-shadow: var(--sidebutton-boxshadow);
+    filter: var(--ChangeIconColor);
+    margin: 0px 10px;
+}
+
+.role {
+    font-size: 14px;
+}
+
+/* Logout buttonn css */
+    /* Container for Logout Button */
+    .logout-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px;
+    }
+
+    /* Logout Button */
+    .logout-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* background: #ecf0f3; */
+        border: none;
+        border-radius: 25px;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: var(--text-color);
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: var(--sidebutton-boxshadow);
+        transition: all 0.3s ease;
+        outline: none;
+        text-decoration: none;
+    }
+
+    /* Icon inside Logout Button */
+    .logout-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.2));
+        filter: var(--ChangeIconColor);
+    }
+
+    /* Hover Effect */
+    .logout-button:hover {
+        background: #212121;
+        color: #ecf0f3;
+        box-shadow: inset -3px -3px 5px rgba(255, 255, 255, 0.1),
+            inset 3px 3px 5px rgba(0, 0, 0, 0.4);
+    }
+
+    .logout-button:hover .logout-icon {
+        filter: brightness(1) invert(0);
+    }
+
+    /* Active (Click) Effect */
+    .logout-button:active {
+        box-shadow: inset -3px -3px 5px rgba(255, 255, 255, 0.1),
+            inset 3px 3px 5px rgba(0, 0, 0, 0.3);
+        transform: scale(0.98);
+    }

@@ -2,7 +2,7 @@
 
 .each_alert{
     border-radius: 5px;
-    width: 90%;
+    width: 70%;
     height: 50px;
     text-align: left;
     display: flex;
@@ -11,9 +11,11 @@
     background-color: var(--bg-color);
     cursor: pointer;
     margin: 20px;
+    margin:20px auto;
     box-shadow: var(--alertBoxShadow);
     position: relative;
 }
+
 
 .check {
     color: #0ad406;

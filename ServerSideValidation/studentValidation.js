@@ -5,9 +5,9 @@ const studentschemaValidate=joi.object({
     phone:joi.number().required(),
     gender:joi.string().valid("Male","Female","Custom").required(),
     DOB:joi.string().required().trim(),
-    class:joi.string().required().trim(),
-    section:joi.string().required().trim(),
-   
+    department:joi.string().required().trim(),
+    batch:joi.string().required().trim(),
+    rollno:joi.string().required().trim()  
 })
 
 module.exports.studentschemaValidate=studentschemaValidate;

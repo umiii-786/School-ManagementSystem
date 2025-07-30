@@ -5,11 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-
-
-    <!-- <link rel="stylesheet" href="/CSS/includesCss/navbar.css"> -->
-    <!-- <link rel="stylesheet" href="/CSS/includesCss/sidebar.css"> -->
     <style>
         .container {
             width: 100%;
@@ -36,6 +31,20 @@
             -moz-appearance: textfield;
         }
     </style>
+
+    <style>
+        @media screen and (max-width:940px) {
+            .sidebar {
+                position: absolute;
+               left: -1000px;
+               z-index: 10;
+            }
+
+            .main_section {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -50,7 +59,22 @@
             </div>
 
     </div>
+    <script>
 
+        document.querySelector('.sidebarBurgur').addEventListener('click', (event) => {
+            const rightElement = document.querySelector('.sidebar')
+            let element_style = window.getComputedStyle(rightElement)
+            console.log(element_style.left)
+           if (element_style.left == '-1000px') {
+            console.log('condition satisfied')
+                rightElement.style.left = '0px'
+            }
+            else {
+                rightElement.style.left = '-1000px'
+            }
+        })
+        
+    </script>
     <script src="https://kit.fontawesome.com/a4fa4ff0b8.js" crossorigin="anonymous"></script>
 </body>
 

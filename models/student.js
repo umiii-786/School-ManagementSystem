@@ -1,5 +1,6 @@
 const mongoose=require('mongoose')
 // mongoose.connect('mongodb://127.0.0.1:27017/School')
+const { User } = require('./users')
 const StudentSchema=new mongoose.Schema({
     identity:{
         type:mongoose.Schema.ObjectId,
@@ -38,7 +39,11 @@ const StudentSchema=new mongoose.Schema({
         type:mongoose.Schema.ObjectId,
         ref:"Department"
     },
-    Rollno:{
+    batch:{
+        type:String,
+        required:true
+    },
+    rollno:{
         type:Number,
         required:true
     },
@@ -48,14 +53,14 @@ const StudentSchema=new mongoose.Schema({
     },
 })
 
-
-StudentSchema.pre('findOneAndDelete',(next)=>{
-    console.log("id ha bro kya kr ha ha ")
-    
-    
-})
+StudentSchema.pre('findOneAndDelete', async function(next) {
+  const userId = this.getQuery().identity;
+  console.log(userId)
+  await User.findByIdAndDelete(userId);
+  next();
+});
 
 const Student=mongoose.model('Student',StudentSchema)
 module.exports={
-    Student,
+    Student
 }

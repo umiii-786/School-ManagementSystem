@@ -5,16 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../CSS/studentCss/addstudent.css">
+    <link rel="stylesheet" href="/CSS/studentCss/addstudent.css">
 
 </head>
 
 <body>
     <% layout('boilerplate') -%>
         <div class="content theme">
+            <h6 class="Info_message_popup"></h6>
+            <span id="purpose" style="visibility: hidden;"></span>
             <div class="text">
                 <h1>
-
                     Student Information
                 </h1>
                 <img src="../../images/studentslogorm.png" alt="student">
@@ -36,7 +37,7 @@
 
                 <div class="field flex_property">
                     <h4 class="lbl">Cnic</h4>
-                    <input type="number" class="controls no-spinners" name="cnic">
+                    <input type="number" class="controls no-spinners" name="cnic" id="cnic">
                     <label class="error-label"></label>
 
                 </div>
@@ -48,36 +49,7 @@
 
                 </div>
 
-                <div class="field flex_property">
-                    <h4 class="lbl">Set Password</h4>
-                    <input type="password" class="controls" name="password">
-                    <label class="error-label"></label>
-
-                </div>
-
-
-                <div class="selectboxes field flex_property">
-                    <h4 class="lbl">Class</h4>
-                    <select name="class" id="selectboxes_Options" class="controls">
-                        <% for( let i=0; i < classes.length; i++ ) { %>
-                            <option>
-                                <%= classes[i].className %>
-                            </option>
-
-                            <% } %>
-                    </select>
-                    <label class="error-label"></label>
-                </div>
-
-                <div class="selectboxes field flex_property">
-                    <h4 class="lbl">Section</h4>
-                    <select name="section" class="controls">
-                        <option>A</option>
-                        <option>B</option>
-                    </select>
-                    <label class="error-label"></label>
-                </div>
-                <div class="selectboxes field flex_property">
+               <div class="selectboxes field flex_property">
                     <h4 class="lbl">Gender</h4>
                     <select name="gender" id="roleOptions" class="controls">
                         <option>Male</option>
@@ -92,15 +64,54 @@
                     <input type="date" class="controls" name="DOB">
                     <label class="error-label"></label>
                 </div>
+
+
+
+
+                <div class="selectboxes field flex_property">
+                    <h4 class="lbl">Department</h4>
+                    <select name="department" id="selectboxes_Options" class="controls">
+                        <% for( let i=0; i < departments.length; i++ ) { %>
+                            <option>
+                                <%= departments[i].department_name %>
+                            </option>
+
+                            <% } %>
+                    </select>
+                    <label class="error-label"></label>
+                </div>
+
+                 <div class="selectboxes field flex_property">
+                    <h4 class="lbl">Choose Batch</h4>
+                    <select name="batch" id="selectboxes_Options" class="controls">
+                        <option>2022</option>
+                        <option>2023</option>
+                        <option>2024</option>
+                        <option>2025</option>
+                    </select>
+                    <label class="error-label"></label>
+                </div>
+
+                 <div class="selectboxes field flex_property">
+                    <h4 class="lbl">Roll no</h4>
+                    <input type="number" class="controls" name="rollno">
+                    <label class="error-label"></label>
+                </div>
+
+                <div class="selectboxes field flex_property">
+                    <h4 class="lbl">Set Password</h4>
+                    <input type="password" class="controls" name="password">
+                    <label class="error-label"></label>
+                </div>
                 <button onclick="validateForm()" type="button" class="btns registerbtn">Add</button>
             </form>
         </div>
         <!-- <h1></h1> -->
 <script>
-     const Preserved_data=<%- JSON.stringify(enteredData) %>;
+   
 </script>
-        <script src="../../JS/preservedData.js"></script>
-        <script src="../../JS/AddForm.js"></script>
+     <!-- <script src="../../JS/preservedData.js"></script> -->
+        <script src="/JS/AddForm.js"></script>
 </body>
 
 </html>

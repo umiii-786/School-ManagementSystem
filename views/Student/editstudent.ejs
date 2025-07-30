@@ -5,91 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../CSS/studentCss/studentedit.css">
-    <style>
-        .inputs {
-            width: 40%;
-            padding: 10px;
-            border-radius: 4px;
-            box-shadow: 0px 0px 7px 0px rgb(189, 192, 189);
-            background: transparent;
-            border: 1px solid rgb(207, 193, 193);
-            outline: none;
-            color: var(--sidebutton-color);
-        }
-
-        .headerSection {
-            display: flex;
-            align-items: center;
-            margin: 30px;
-            margin-bottom: 10px;
-        }
-
-        .h1 {
-            margin-left: 50px;
-            /* text-shadow: 1px 16px 9px rgb(53, 49, 49); */
-            font-size: 35px;
-            color: var(--tableColor)
-        }
-
-        .submit {
-            background-color: var(--tableColor);
-            padding: 10px;
-            border: 0px;
-            font-size: 17px;
-            font-weight: 600;
-            color: white;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .submit:hover {
-            background-color: #fd7066;
-        }
-
-        .tagname {
-            font-size: 22px;
-            font-weight: bold;
-            color:var(--tableColor);
-        }
-
-        .fieldContainer {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .error-label {
-            font-size: 13px;
-            color: rgb(252, 69, 69);
-        }
-        .profile-section{
-            display: flex;
-            flex-direction: column;
-            /* justify-content: center; */
-            align-items: center;
-        }
-
-        .profile-section .img {
-           
-            height: 150px;
-            margin-top: 1.6em;
-            aspect-ratio: 1;
-            border-radius: 49%;
-            background: #f2f2f3;
-            margin-bottom: 0.4em;
-            box-shadow: var(--profileIconShadow)
-        }
-        select>option{
-            color: black;
-        }
-        .subheading{
-            font-size: 14px;
-            color: var(--sidebutton-color);
-        }
-        .section_name{
-            font-size: 12px;
-        }
-    </style>
+    <link rel="stylesheet" href="/CSS/studentCss/studentedit.css">
+    
 </head>
 
 <body>
@@ -97,7 +14,8 @@
     <div class="container">
         <div class="card user-card">
                 <%- include('../includes/alerts.ejs') %>
-
+                <span id="purpose" style="visibility: none;">edit</span>
+                <h6 class="Info_message_popup"></h6>
                 <div class="headerSection">
                     <!-- <div class="profile-details text-center">
                        
@@ -110,8 +28,8 @@
                         <h4 class="tagname">
                             <%= data.identity.Role %>
                         </h4>
-                        <h3 class="subheading">Class :<%= data.class.className %></h3>
-                        <h4 class="subheading section_name">Section : <%= data.section %> </h4>
+                        <h3 class="subheading">Department :<%= data.department.department_name %></h3>
+                        <h4 class="subheading section_name">Batch : <%= data.batch %> </h4>
                         
 
                     </div>
@@ -160,7 +78,7 @@
                         <div class="info-row">
                             <div>
                                 <p>Cnic</p>
-                                <h6 class="fieldContainer"><input type="number" class="controls inputs" name="cnic"
+                                <h6 class="fieldContainer"><input type="number" id="cnic" class="controls inputs" name="cnic"
                                         value="<%= data.identity.cnic %>">
                                     <label class="error-label"></label>
                                 </h6>
@@ -175,15 +93,15 @@
                         </div>
                         <div class="info-row">
                             <div>
-                                <p>Rollno</p>
-                                <h6 class="fieldContainer"> <input type="number" class="controls inputs" name="Rollno"
-                                        value="<%= data.Rollno %>">
+                                <p>rollno</p>
+                                <h6 class="fieldContainer"> <input type="number" class="controls inputs" name="rollno"
+                                        value="<%= data.rollno %>">
                                     <label class="error-label"></label>
                                 </h6>
                             </div>
 
-                            <input type="text" style="display: none;" name="class" value="<%= data.class._id %>">
-                            <input type="text" style="display: none;" name="section" value="<%= data.section %>">
+                            <input type="text" style="display: none;" name="department" value="<%= data.department %>">
+                            <input type="text" style="display: none;" name="batch" value="<%= data.batch %>">
                         </div>
 
                     </div>
@@ -192,7 +110,7 @@
             </div>
         </div>
 
-        <script src="../../JS/AddForm.js"></script>
+        <script src="/JS/AddForm.js"></script>
 </body>
 
 </html>
