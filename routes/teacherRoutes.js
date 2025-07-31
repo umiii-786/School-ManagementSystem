@@ -14,17 +14,17 @@ const {
     AddCourses
 } = require('../controllers/teacher')
 
-router.get('/', TeacherForm)
-router.post('/', UserValidate, TeacherValidate, wrapAsync(addTeacher))
+router.get('/', IsLogin,TeacherForm)
+router.post('/',IsLogin, UserValidate, TeacherValidate, wrapAsync(addTeacher))
 // console.log('good in teche')
-router.get('/manage', wrapAsync(filterTeacher))
-router.get('/:id', wrapAsync(getParticularTeacher))
-router.put('/:id', wrapAsync(EditParticularTeacher))
-router.delete('/:id' ,wrapAsync(deleteParticularTeacher))
+router.get('/manage',IsLogin, wrapAsync(filterTeacher))
+router.get('/:id',IsLogin, wrapAsync(getParticularTeacher))
+router.put('/:id',IsLogin, wrapAsync(EditParticularTeacher))
+router.delete('/:id',IsLogin ,wrapAsync(deleteParticularTeacher))
 
 
-router.get("/edit/:id",  wrapAsync(showTeacher_EditPage))
+router.get("/edit/:id",IsLogin,  wrapAsync(showTeacher_EditPage))
 
-router.post('/:id/course', lectureValidate, wrapAsync(AddCourses))
+router.post('/:id/course',IsLogin, lectureValidate, wrapAsync(AddCourses))
 
 module.exports = router
