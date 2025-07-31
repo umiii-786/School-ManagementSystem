@@ -14,14 +14,14 @@ const {showStudentPage,CreateStudent,FilterStudent,getParticularStudent,
 const {IsLogin}=require('../middlewares/index')
 const {UserValidate,StudentValidate}=require('../middlewares/validationMiddlewares')
 
-router.get('/', IsLogin,wrapAsync(showStudentPage))
-router.post('/', IsLogin, UserValidate, StudentValidate,wrapAsync(CreateStudent))
-router.get('/manage', IsLogin,wrapAsync(FilterStudent ))
-router.get('/:id', IsLogin,wrapAsync( getParticularStudent))
-router.put('/:id', IsLogin, StudentValidate,wrapAsync(EditParticularStudent))
+router.get('/',wrapAsync(showStudentPage))
+router.post('/', UserValidate, StudentValidate,wrapAsync(CreateStudent))
+router.get('/manage',wrapAsync(FilterStudent ))
+router.get('/:id',wrapAsync( getParticularStudent))
+router.put('/:id', StudentValidate,wrapAsync(EditParticularStudent))
 router.delete('/:id',wrapAsync(deleteParticularStudent))
-router.get("/edit/:id", IsLogin, wrapAsync(getParticular_student_EditPage))
-router.patch('/:id/pic', IsLogin, profile_upload.single('profileImg'),wrapAsync(editStudentProfile ))
+router.get("/edit/:id", wrapAsync(getParticular_student_EditPage))
+router.patch('/:id/pic', profile_upload.single('profileImg'),wrapAsync(editStudentProfile ))
 
 
 module.exports=router

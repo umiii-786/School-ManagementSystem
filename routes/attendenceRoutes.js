@@ -8,8 +8,8 @@ const {
 } = require('../controllers/attendence')
 const { wrapAsync ,IsLogin} = require('../middlewares')
 
-router.get('/', IsLogin,wrapAsync(showAttendencePortal))
-router.post('/', IsLogin,wrapAsync(Add_Attendence_of_particular_lecture))
-router.get('/lecture/:lectureId', IsLogin,wrapAsync(ShowParticular_lecture_portal))
+router.get('/',wrapAsync(showAttendencePortal))
+router.post('/',wrapAsync(Add_Attendence_of_particular_lecture))
+router.get('/lecture/:lectureId',wrapAsync(ShowParticular_lecture_portal))
 
 module.exports = router

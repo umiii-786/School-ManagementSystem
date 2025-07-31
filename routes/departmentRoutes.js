@@ -14,15 +14,15 @@ const {upload}=require('../utils/ImageStorage')
 const {department_validate}=require('../middlewares/validationMiddlewares')
 
 
-router.get('/', IsLogin,showAddDepartment )
+router.get('/',showAddDepartment )
 
 
-router.post('/', IsLogin, upload.single('curriculum'), department_validate,wrapAsync(AddDepartment))
+router.post('/', upload.single('curriculum'), department_validate,wrapAsync(AddDepartment))
 
-router.get('/manage', IsLogin,wrapAsync(ManageDepartment))
+router.get('/manage',wrapAsync(ManageDepartment))
 
-router.get('/:id',IsLogin,wrapAsync(Particular_department))
+router.get('/:id',wrapAsync(Particular_department))
 
-router.put('/:id', IsLogin,wrapAsync(AddFaculty))
+router.put('/:id',wrapAsync(AddFaculty))
 
 module.exports=router

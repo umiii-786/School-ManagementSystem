@@ -58,7 +58,7 @@ app.use(setFlashMessages)
 
 const PORT = process.env.PORT
 
-app.get('/', IsLogin, async (req, res) => {
+app.get('/', async (req, res) => {
     const students = await Student.find({})
     const teachers = await Teacher.find({})
     const department = await Department.find({})
@@ -89,7 +89,7 @@ app.post('/check/user', async (req, res) => {
     }
 })
 
-app.get('/Questgpt', IsLogin, (req, res) => {
+app.get('/Questgpt', (req, res) => {
     res.render('QuestBot/quest_bot.ejs')
 })
 

@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <% layout('boilerplate') -%>
+    <% layout('Boilerplate') -%>
         <h4 class="manage_heading">Search Teachers Easily</h4>
         <form action="/teacher/manage" class="options">
             <input type="text" name="name" placeholder="search by name" class="search_inputs">
@@ -42,7 +42,7 @@
 
         <% if (data.length==0) { %>
             <div class="image">
-                <img src="../../images/filterimagerm.png" alt="filter">
+                <img src="/images/filterimagerm.png" alt="filter">
             </div>
 
             <% } else {%>
