@@ -25,7 +25,7 @@
                             <%= data.belong_to.department_name %>
                         </p>
                       
-                         <% if (itself.Role!='Admin' && (itself.information._id.toString()==data._id.toString())) { %>
+                         <% if (itself.Role!='Admin' && (itself.information._id.toString()==data._id.toString() )) { %>
                         <i class="icon-edit" onclick="showUploader()">&#9998;</i>
                         <form action="/teacher/<%= data.id %>/pic?_method=PATCH" method="post"
                             enctype="multipart/form-data" class="profileImg_Form">

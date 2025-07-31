@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
      <link rel="stylesheet" href="/CSS/attendenceCss/student_attendence.css">
+     <style>
+        .allStudents{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .attendenceCard{
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+     </style>
 </head>
 
 <body>
@@ -58,6 +69,9 @@
                             </select>
                         </div>
 
+                    <div class="allStudents">
+
+                    
                     <% for( let i=0; i < Students.length; i++ ) { %>
 
                         <div class="attendenceCard">
@@ -93,6 +107,7 @@
                         </div>
                         <% } %>
 
+                        </div>
                             <input type="date" value="<%= date %>" name="Date" style="display: none;">
                             <button class="submit_btn" type="button" >submit</button>
 

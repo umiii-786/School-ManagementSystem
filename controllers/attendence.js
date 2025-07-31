@@ -6,13 +6,16 @@
  const {Attendence}=require('../models/AttendenceModel')
  
  async function showAttendencePortal (req, res,next) {
-    const teacher = await Teacher.findById('6879f703166f6f0a0de63c07').populate({
+    const teacher_id=req.user.information
+    console.log(teacher_id)
+    const teacher = await Teacher.findById(teacher_id).populate({
         path: "lectures",
         populate: {
             path: 'department',
             model: 'Department'
         }
     })
+    console.log(teacher)
     const currentDate = new Date();
     const formattedDate = currentDate.toISOString().slice(0, 10);
     console.log(teacher.lectures)
@@ -52,6 +55,5 @@ module.exports={
         showAttendencePortal,
         Add_Attendence_of_particular_lecture,
         ShowParticular_lecture_portal
-
 
 }

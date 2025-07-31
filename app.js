@@ -46,7 +46,7 @@ passport.use(new passportLocal({ usernameField: 'cnic' }, User.authenticate()))
 
 
 
-
+// const db_url='mongodb://127.0.0.1:27017/School'
 const db_url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.ka3ytu0.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority&appName=Cluster0`
 console.log(db_url)
 console.log(typeof(db_url))
@@ -102,7 +102,7 @@ app.post("/login", passport.authenticate('local', {
     failureRedirect: "/login",
     failureFlash: "Invalid Cnic or Password"
 }), (req, res) => {
-    req.flash("success", "Logged in Successfully")
+    req.flash("success", `Logged in Successfully Welcome to the ${req.user.Role} DashBoard`)
     res.redirect('/')
 })
 app.get("/logout", (req, res) => {

@@ -4,8 +4,6 @@ const mongoose=require('mongoose')
 const { validate } = require('uuid')
 
 
-// Each student attendence Object schema 
-
 const attendence_record_schema=mongoose.Schema({
     _id:false,
     status:{

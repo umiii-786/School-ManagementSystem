@@ -1,6 +1,7 @@
 const {Department}=require('../models/DeptModel')
 const {Teacher}=require('../models/Teacher')
 const fs = require('fs');
+const path = require('path')
 
 function showAddDepartment(req, res){
     res.render('Department/AddDepartment.ejs')

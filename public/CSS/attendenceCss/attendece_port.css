@@ -10,6 +10,7 @@
             flex-direction: column;
             justify-content: center;
             position: relative;
+            margin-top: 20px;
         }
 
         .main {
@@ -23,6 +24,7 @@
         .lectures {
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
         }
 
         /* box-shadow: 15px 15px 30px rgb(25, 25, 25),
